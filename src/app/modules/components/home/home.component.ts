@@ -1,19 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { Utils } from 'src/app/utils/utils';
-import { UtilsText } from 'src/app/utils/utilsText';
 import { EndpointsService } from '../../services/endpoints/endpoints.service';
 
 @Component({
-  selector: 'app-past',
-  templateUrl: './past.component.html',
+  selector: 'app-home',
+  templateUrl: './home.component.html',
   styleUrls: ['../../../../../src/app/app.component.scss']
 })
-export class PastComponent {
+export class HomeComponent {
 
   private endpoints: EndpointsService = inject(EndpointsService);
   private utils: Utils = inject(Utils);
-  private utilsText: UtilsText = inject(UtilsText);
-
+  
   constructor () {
   }
 
@@ -43,14 +41,13 @@ export class PastComponent {
     let unixFinish = this.utils.realDateToUnixTimeStamp(finishDate) 
     let unixNOW = this.utils.realDateToUnixTimeStamp(dateNOW);
 
-    if(unixNOW >= unixInitial) {
-      if(unixNOW <= unixFinish) {
-        this.endpoints.getGamesReleaseDate(initialDate, dateNOW, appendTable, false);
-      } else {
-        this.endpoints.getGamesReleaseDate(initialDate, finishDate, appendTable, false);
-      }
+    if((unixNOW >= unixInitial) && (unixNOW <= unixFinish)) {
+      this.endpoints.getGamesReleaseDate(dateNOW, finishDate, appendTable, false);
+    } else if (unixNOW < unixInitial) {
+      this.endpoints.getGamesReleaseDate(initialDate, finishDate, appendTable, false);
+    } else if (unixNOW > unixFinish) {
+      console.log("NO HAY FECHA")
     }
-    
   }
 
 }

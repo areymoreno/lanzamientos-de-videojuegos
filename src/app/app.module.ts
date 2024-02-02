@@ -10,8 +10,10 @@ import { NavbarComponent } from './modules/navbar/navbar.component';
 import { FooterComponent } from './modules/footer/footer.component';
 import { OptionsComponent } from './modules/options/options.component';
 import { Constantes } from './utils/constantes';
-import { IndexComponent } from './modules/components/index/index.component';
+import { HomeComponent } from './modules/components/home/home.component';
 import { PastComponent } from './modules/components/past/past.component';
+import { DeathQuarterComponent } from './modules/components/deathQuarter/deathQuarter.component';
+import { GotyComponent } from './modules/components/goty/goty.component';
 
 
 @NgModule({
@@ -20,8 +22,10 @@ import { PastComponent } from './modules/components/past/past.component';
     NavbarComponent,
     FooterComponent,
     OptionsComponent,
-    IndexComponent,
-    PastComponent
+    HomeComponent,
+    PastComponent,
+    DeathQuarterComponent,
+    GotyComponent
   ],
   imports: [
     BrowserModule,

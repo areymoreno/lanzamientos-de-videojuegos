@@ -18,7 +18,6 @@ export class Utils {
   GAMES_ARRAY = Constantes.STAR_GAMES;
   PATCH_ARRAY = Constantes.PATCH_GAMES;
   SEASON_ARRAY = Constantes.SEASON_GAMES;
-  COMPANIES_ARRAY = Constantes.COMPANIES;
 
   unixTimeStampToRealDate(unixTimeStamp: number) {
     const miliseconds = unixTimeStamp * 1000;
@@ -70,7 +69,7 @@ export class Utils {
   }
 
 
-  createElementNode(appendTable: string) {
+  createElementNode(appendTable: string, deathBool: boolean) {
 
     let varMonth = "";
     let varTable = "table" + appendTable;
@@ -86,7 +85,12 @@ export class Utils {
     const app = document.getElementById("yearCalendar");
     const div = document.createElement("div");
 
-    div.setAttribute("class", "col-md-6");
+    if(deathBool) {
+      div.setAttribute("class", "col-md-4");
+    } else {
+      div.setAttribute("class", "col-md-6");
+    }
+
     div.innerHTML = cadena;
     app?.appendChild(div);
     
@@ -95,28 +99,15 @@ export class Utils {
 
 
   postCalendarList(data: any, varTable: string) {
-    let sumatorGames = 0;
-    let companiesSum = 0;
-    let companiesName: any[] = [];
-
     data.forEach((item: any) => {
       let cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.platforms);
-      let developers = item.companies;
-
-      if(developers) {
-        developers.forEach((item: any) => {
-          companiesName.push(item.company.name);
-        })
-      }
-
-      this.postLabel(item.releaseDate, item.name, item.slug, companiesName, cadenaPlatforms, varTable);
+      this.postLabel(item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
     })
   }
 
-  postLabel (releaseDate: string, name: string, slug: string, companiesName: any[], cadenaPlatforms: string, varTable: string) {  
+  postLabel (releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {  
 
-    let boolCompanies = 0;
-    let boolName, boolSeason, boolPatch, boolCompany; 
+    let boolName, boolSeason, boolPatch;
 
     const nameToFind = name;
 
@@ -128,15 +119,6 @@ export class Utils {
     boolSeason = this.isBoolean(seasonToSearch);
     boolPatch = this.isBoolean(patchToSearch);
 
-    companiesName.forEach((company: any) => {
-      const companyToSearch = this.COMPANIES_ARRAY.find(elemento => elemento === company);
-      console.log("name > ", name ," | companyToSearch >", companyToSearch, " | ", company, " < company");
-      if (companyToSearch !== undefined) {
-        boolCompanies++;
-      }
-    });
-
-    if (boolCompanies > 0) {
       if (boolName && (varTable != "tableTBA")) {
         this.utilsText.createStarNode(releaseDate, name, slug, cadenaPlatforms, varTable);
       } else if (boolSeason) {
@@ -150,9 +132,6 @@ export class Utils {
       } else {
         this.utilsText.createStandardNode(releaseDate, name, slug, cadenaPlatforms, varTable);
       }
-    } else {
-      console.error("NO ENTRO")
-    }
 
   }
 }

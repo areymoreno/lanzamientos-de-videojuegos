@@ -13,7 +13,7 @@ export class EndpointsService {
 
   constructor() { }
 
-  getGamesReleaseDate(initialDate: string, finishDate: string, appendTable: string) {
+  getGamesReleaseDate(initialDate: string, finishDate: string, appendTable: string, boolDeath: boolean) {
 
     let initialUNIX = this.utils.realDateToUnixTimeStamp(initialDate);
     let finishUNIX = this.utils.realDateToUnixTimeStamp(finishDate);
@@ -27,7 +27,12 @@ export class EndpointsService {
     let response = this.http.post(dataURL, data, { headers });
 
     if(response) {
-      let varTable = this.utils.createElementNode(appendTable);
+      let varTable = "";
+      if(boolDeath) {
+        varTable = this.utils.createElementNode(appendTable, boolDeath);
+      } else {
+        varTable = this.utils.createElementNode(appendTable, boolDeath);
+      }    
 
       response.subscribe((data: any) => {
         data = data.map((item: any) => {
@@ -40,7 +45,7 @@ export class EndpointsService {
           }
           
         });
-        console.log("data COCINADA >", data);
+        //console.log("data COCINADA >", data);
         this.utils.postCalendarList(data, varTable);
       });
     } 
