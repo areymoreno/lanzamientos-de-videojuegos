@@ -13,7 +13,7 @@ import { Constantes } from './utils/constantes';
 import { HomeComponent } from './modules/components/home/home.component';
 import { PastComponent } from './modules/components/past/past.component';
 import { DeathQuarterComponent } from './modules/components/deathQuarter/deathQuarter.component';
-import { GotyComponent } from './modules/components/goty/goty.component';
+import { ModalComponent } from './modules/modal/modal.component';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { GotyComponent } from './modules/components/goty/goty.component';
     HomeComponent,
     PastComponent,
     DeathQuarterComponent,
-    GotyComponent
+    ModalComponent
   ],
   imports: [
     BrowserModule,

@@ -10,8 +10,9 @@ const routes: Routes = [
   { path: 'lanzamientos-pasados', component: PastComponent },
   { path: 'game-of-the-year', component: GotyComponent },
   { path: 'cuenco-de-arroz', component: DeathQuarterComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige a Home por defecto
-
+  { path: '/', redirectTo: '/home', pathMatch: 'full' }, 
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }, // Redirige a Home por defecto
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
 export class Constantes {
 
-  static readonly CORS_SH = '';
-  static readonly CORS_SH_KEY = "";
-  static readonly CLIENT_ID = "";
-  static readonly BEARER_FINAL = "";
+  static readonly CORS_SH = 'https://proxy.cors.sh/';
+  static readonly CORS_SH_KEY = "live_f46a9eeffb5fcae750a356a53b2fb571016cebfba637410e864c6512fa625aa0";
+  static readonly CLIENT_ID = "spn1fzis5flcrayf5ztt6g8uf49pnr";
+  static readonly BEARER_FINAL = "Bearer na22djyza69zk42g708e6x7c0rsidl";
 
   static readonly STAR_GAMES = [
     "Alone in the Dark",
