@@ -9,14 +9,13 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'lanzamientos-pasados', component: PastComponent },
   { path: 'game-of-the-year', component: GotyComponent },
-  { path: 'cuenco-de-arroz', component: DeathQuarterComponent },
-  { path: '/', redirectTo: '/home', pathMatch: 'full' }, 
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
-  { path: '**', redirectTo: '/home', pathMatch: 'full' }, // Redirige a Home por defecto
+  { path: 'cuenco-de-arroz', component: DeathQuarterComponent }, 
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, 
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }, // Redirige a Home por defecto
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

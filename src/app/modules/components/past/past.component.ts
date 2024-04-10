@@ -14,6 +14,8 @@ export class PastComponent {
   private utils: Utils = inject(Utils);
   private utilsText: UtilsText = inject(UtilsText);
 
+  elementId = "yearCalendar";
+
   constructor () {
   }
 
@@ -45,9 +47,9 @@ export class PastComponent {
 
     if(unixNOW >= unixInitial) {
       if(unixNOW <= unixFinish) {
-        this.endpoints.getGamesReleaseDate(initialDate, dateNOW, appendTable, false);
+        this.endpoints.getGamesReleaseDate(this.elementId, initialDate, dateNOW, appendTable, false);
       } else {
-        this.endpoints.getGamesReleaseDate(initialDate, finishDate, appendTable, false);
+        this.endpoints.getGamesReleaseDate(this.elementId, initialDate, finishDate, appendTable, false);
       }
     }
     

@@ -50,7 +50,7 @@ export class UtilsText {
     app?.appendChild(div);
   }
 
-  createPathNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
+  createPatchNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     let cadena = '<div style="color: white;">' + releaseDate + ' - <b><a style="color: black; text-decoration: none;" target="_blank" href="https://www.igdb.com/games/' + slug + '">' + name + '</a></b></div>' +
       '<div class="text-end">' + cadenaPlatforms + '</div>';
 

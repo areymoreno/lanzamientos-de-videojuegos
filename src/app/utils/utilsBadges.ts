@@ -15,12 +15,9 @@ export class UtilsBadges {
     let xbox = 0;
     let nintendo = 0;
     let pc = 0;
-    let mobile = 0;
-    let android = 0;
-    let mac = 0;
-    let iOS = 0;
+    let smartphone = 0;
+    let apple = 0;
     let vr = 0;
-    let evercade = 0;
 
     platforms.forEach((item: any) => {
       switch (item.id) {
@@ -43,13 +40,13 @@ export class UtilsBadges {
           pc++;
           break;
         case 14:
-          mac++;
+          apple++;
           break;
         case 39:
-          iOS++;
+          smartphone++;
           break;
         case 34:
-          android++;
+          smartphone++;
           break;
         case 386:
           vr++;
@@ -63,19 +60,13 @@ export class UtilsBadges {
         case 163:
           vr++;
           break;
-        case 309:
-          evercade++;
-          break;
-        case 55:
-          mobile++;
-          break;
       }
     });
 
-    return this.postPlatforms(playstation, xbox, nintendo, pc, mobile, android, iOS, mac, vr, evercade);
+    return this.postPlatforms(playstation, xbox, nintendo, pc, smartphone, apple, vr);
   }
 
-  postPlatforms(playstation: number, xbox: number, nintendo: number, pc: number, mobile: number, android: number, iOS: number, mac: number, vr: number, evercade: number) {
+  postPlatforms(playstation: number, xbox: number, nintendo: number, pc: number, smartphone: number, apple: number, vr: number) {
     let cadena = '';
 
     if (playstation) {
@@ -94,31 +85,19 @@ export class UtilsBadges {
       cadena = cadena + '<span class="badge text-bg-secondary" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Windows"><i class="bi bi-windows"></i></span>';
     }
 
-    if (mac) {
+    if (apple) {
       cadena = cadena + '<span class="badge text-bg-dark" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Apple"><i class="bi bi-apple" ></i></span>';
     }
 
     if (vr) {
-      cadena = cadena + '<span class="badge text-bg-vr" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="VR"><i class="bi bi-badge-vr-fill"></i></span>';
+      cadena = cadena + '<span class="badge text-bg-info" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="VR"><i class="bi bi-badge-vr-fill"></i></span>';
     }
 
-    if (mobile) {
-      cadena = cadena + '<span class="badge text-bg-info" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dispositivos móviles antiguos"><i class="bi bi-calculator"></i></span>';
+    if (smartphone) {
+      cadena = cadena + '<span class="badge border border-dark text-bg-light" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Smartphone"><i class="bi bi-phone-fill"></i></span>';
     }
 
-    if (android) {
-      cadena = cadena + '<span class="badge text-bg-android" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Android"><i class="bi bi-android2"></i></span>';
-    }
-
-    if (iOS) {
-      cadena = cadena + '<span class="badge text-bg-iphone" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="iPhone"><i class="bi bi-phone"></i></span>';
-    }
-
-    if (evercade) {
-      cadena = cadena + '<span class="badge text-bg-evercade" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Evercade">EC</span>';
-    }
-
-    if ((!playstation) && (!xbox) && (!pc) && (!nintendo) && (!mobile) && (!mac) && (!vr) && (!evercade)) {
+    if ((!playstation) && (!xbox) && (!pc) && (!nintendo) && (!apple) && (!vr) && (!smartphone)) {
       cadena = cadena + '<span class="badge text-bg-warning" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Varias plataformas"><i class="bi bi-question-square-fill"></i></span>';
     }
 

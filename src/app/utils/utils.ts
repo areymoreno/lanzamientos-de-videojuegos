@@ -69,20 +69,28 @@ export class Utils {
   }
 
 
-  createElementNode(appendTable: string, deathBool: boolean) {
+  createElementNode(elementId: string, appendTable: string, deathBool: boolean) {
 
     let varMonth = "";
     let varTable = "table" + appendTable;
 
-    Constantes.MONTHS_YEAR.forEach(element => {
-      if (element.append === appendTable) {
-        varMonth = element.opcion;
-      }
-    });
+    if(elementId === "yearCalendar") {
+      Constantes.MONTHS_YEAR.forEach(element => {
+        if (element.append === appendTable) {
+          varMonth = element.opcion;
+        }
+      });
+    } else if(elementId === "yearTBA") {
+      Constantes.MONTHS_YEAR_TBA.forEach(element => {
+        if (element.append === appendTable) {
+          varMonth = element.opcion;
+        }
+      });
+    }    
 
     let cadena = '<div id="month"><h4 style="padding: 10px;">' + varMonth + '</h4><ul id="' + varTable + '" class="list-group"></ul></div>';
 
-    const app = document.getElementById("yearCalendar");
+    const app = document.getElementById(elementId);
     const div = document.createElement("div");
 
     if(deathBool) {
@@ -96,7 +104,6 @@ export class Utils {
     
     return varTable;
   }
-
 
   postCalendarList(data: any, varTable: string) {
     data.forEach((item: any) => {
@@ -124,7 +131,7 @@ export class Utils {
       } else if (boolSeason) {
         this.utilsText.createSeasonNode(releaseDate, name, slug, cadenaPlatforms, varTable);
       } else if (boolPatch) {
-        this.utilsText.createPathNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+        this.utilsText.createPatchNode(releaseDate, name, slug, cadenaPlatforms, varTable);
       } else if ((boolName) && (varTable === "tableTBA")) {
         this.utilsText.createStarTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
       } else if (varTable === "tableTBA") {
