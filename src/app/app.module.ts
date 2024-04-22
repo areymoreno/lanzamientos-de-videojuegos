@@ -12,7 +12,6 @@ import { OptionsComponent } from './modules/options/options.component';
 import { Constantes } from './utils/constantes';
 import { HomeComponent } from './modules/components/home/home.component';
 import { PastComponent } from './modules/components/past/past.component';
-import { DeathQuarterComponent } from './modules/components/deathQuarter/deathQuarter.component';
 import { ModalComponent } from './modules/modal/modal.component';
 
 
@@ -24,7 +23,6 @@ import { ModalComponent } from './modules/modal/modal.component';
     OptionsComponent,
     HomeComponent,
     PastComponent,
-    DeathQuarterComponent,
     ModalComponent
   ],
   imports: [

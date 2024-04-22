@@ -69,7 +69,7 @@ export class Utils {
   }
 
 
-  createElementNode(elementId: string, appendTable: string, deathBool: boolean) {
+  createElementNode(elementId: string, appendTable: string) {
 
     let varMonth = "";
     let varTable = "table" + appendTable;
@@ -86,6 +86,12 @@ export class Utils {
           varMonth = element.opcion;
         }
       });
+    } else if(elementId === "yearQuarters") {
+      Constantes.GAMES_YEAR_TBA.forEach(element => {
+        if (element.append === appendTable) {
+          varMonth = element.opcion;
+        }
+      });
     }    
 
     let cadena = '<div id="month"><h4 style="padding: 10px;">' + varMonth + '</h4><ul id="' + varTable + '" class="list-group"></ul></div>';
@@ -93,12 +99,7 @@ export class Utils {
     const app = document.getElementById(elementId);
     const div = document.createElement("div");
 
-    if(deathBool) {
-      div.setAttribute("class", "col-md-4");
-    } else {
-      div.setAttribute("class", "col-md-6");
-    }
-
+    div.setAttribute("class", "col-md-6");
     div.innerHTML = cadena;
     app?.appendChild(div);
     
@@ -126,15 +127,15 @@ export class Utils {
     boolSeason = this.isBoolean(seasonToSearch);
     boolPatch = this.isBoolean(patchToSearch);
 
-      if (boolName && (varTable != "tableTBA")) {
+      if (boolName && (!varTable.includes("TBA"))) {
         this.utilsText.createStarNode(releaseDate, name, slug, cadenaPlatforms, varTable);
       } else if (boolSeason) {
         this.utilsText.createSeasonNode(releaseDate, name, slug, cadenaPlatforms, varTable);
       } else if (boolPatch) {
-        this.utilsText.createPatchNode(releaseDate, name, slug, cadenaPlatforms, varTable);
-      } else if ((boolName) && (varTable === "tableTBA")) {
+        this.utilsText.createExpansionNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+      } else if ((boolName) && (varTable.includes("TBA"))) {
         this.utilsText.createStarTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
-      } else if (varTable === "tableTBA") {
+      } else if (varTable.includes("TBA")) {
         this.utilsText.createTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
       } else {
         this.utilsText.createStandardNode(releaseDate, name, slug, cadenaPlatforms, varTable);

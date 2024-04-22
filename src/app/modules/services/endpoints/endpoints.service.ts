@@ -13,13 +13,11 @@ export class EndpointsService {
 
   constructor() { }
 
-  getGamesReleaseDate(elementId: string, initialDate: string, finishDate: string, appendTable: string, boolDeath: boolean) {
-
+  getGamesReleaseDate(elementId: string, initialDate: string, finishDate: string, appendTable: string) {
+    
     let initialUNIX = this.utils.realDateToUnixTimeStamp(initialDate);
     let finishUNIX = this.utils.realDateToUnixTimeStamp(finishDate);
-
     let dataURL = Constantes.CORS_SH + "https://api.igdb.com/v4/games/";
-
     let headers;
 
     if(elementId === "yearCalendar") {
@@ -34,12 +32,7 @@ export class EndpointsService {
     let response = this.http.post(dataURL, data, { headers });
 
     if(response) {
-      let varTable = "";
-      if(boolDeath) {
-        varTable = this.utils.createElementNode(elementId, appendTable, boolDeath);
-      } else {
-        varTable = this.utils.createElementNode(elementId, appendTable, boolDeath);
-      }    
+      let varTable = this.utils.createElementNode(elementId, appendTable);  
 
       response.subscribe((data: any) => {
         data = data.map((item: any) => {
@@ -52,7 +45,6 @@ export class EndpointsService {
           }
           
         });
-        //console.log("data COCINADA >", data);
         this.utils.postCalendarList(data, varTable);
       });
     } 

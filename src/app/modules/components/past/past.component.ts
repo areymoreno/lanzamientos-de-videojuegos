@@ -47,12 +47,11 @@ export class PastComponent {
 
     if(unixNOW >= unixInitial) {
       if(unixNOW <= unixFinish) {
-        this.endpoints.getGamesReleaseDate(this.elementId, initialDate, dateNOW, appendTable, false);
+        this.endpoints.getGamesReleaseDate(this.elementId, initialDate, dateNOW, appendTable);
       } else {
-        this.endpoints.getGamesReleaseDate(this.elementId, initialDate, finishDate, appendTable, false);
+        this.endpoints.getGamesReleaseDate(this.elementId, initialDate, finishDate, appendTable);
       }
     }
     
   }
-
 }
