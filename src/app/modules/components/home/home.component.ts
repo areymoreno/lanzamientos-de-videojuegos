@@ -37,13 +37,14 @@ export class HomeComponent {
     this.automaticCalendar(this.elementId, "2024-11-01", "2024-11-30", dateNOW, "NOV");
     this.automaticCalendar(this.elementId, "2024-12-01", "2024-12-30", dateNOW, "DIC");
 
-    this.automaticCalendar(this.elementQuarters, "2024-06-30", "2024-06-30", dateNOW, "Q2TBA");
-    this.automaticCalendar(this.elementQuarters, "2024-09-30", "2024-09-30", dateNOW, "Q3TBA");
+    //this.automaticCalendar(this.elementQuarters, "2024-03-31", "2024-03-31", dateNOW, "Q2TBA");
+    //this.automaticCalendar(this.elementQuarters, "2024-06-30", "2024-06-30", dateNOW, "Q2TBA");
+    //this.automaticCalendar(this.elementQuarters, "2024-09-30", "2024-09-30", dateNOW, "Q3TBA");
     this.automaticCalendar(this.elementQuarters, "2024-12-31", "2024-12-31", dateNOW, "Q4TBA");
 
-    this.automaticCalendar(this.elementTBA, "2025-01-01", "2024-01-31", dateNOW, "ENETBA");
-    this.automaticCalendar(this.elementTBA, "2025-02-01", "2024-02-28", dateNOW, "FEBTBA");
-    this.automaticCalendar(this.elementTBA, "2025-03-01", "2024-03-31", dateNOW, "MARTBA");
+    this.automaticCalendar(this.elementTBA, "2025-01-01", "2025-01-31", dateNOW, "ENETBA");
+    this.automaticCalendar(this.elementTBA, "2025-02-01", "2025-02-28", dateNOW, "FEBTBA");
+    this.automaticCalendar(this.elementTBA, "2025-03-01", "2025-03-31", dateNOW, "MARTBA");
     this.automaticCalendar(this.elementTBA, "2025-04-01", "2025-04-30", dateNOW, "ABRTBA");
     this.automaticCalendar(this.elementTBA, "2025-05-01", "2025-05-31", dateNOW, "MAYTBA");
     this.automaticCalendar(this.elementTBA, "2025-06-01", "2025-06-30", dateNOW, "JUNTBA");
@@ -53,7 +54,6 @@ export class HomeComponent {
     this.automaticCalendar(this.elementTBA, "2025-10-01", "2025-10-31", dateNOW, "OCTTBA");
     this.automaticCalendar(this.elementTBA, "2025-11-01", "2025-11-30", dateNOW, "NOVTBA");
     this.automaticCalendar(this.elementTBA, "2025-12-01", "2025-12-31", dateNOW, "DICTBA");
-
   }
 
   automaticCalendar(elementalId: string, initialDate: string, finishDate: string, dateNOW: string, appendTable: string) {
@@ -66,8 +66,6 @@ export class HomeComponent {
       this.endpoints.getGamesReleaseDate(elementalId, dateNOW, finishDate, appendTable);
     } else if (unixNOW < unixInitial) {
       this.endpoints.getGamesReleaseDate(elementalId, initialDate, finishDate, appendTable);
-    } else if (unixNOW > unixFinish) {
-      console.log("NO HAY FECHA")
     }
   }
 

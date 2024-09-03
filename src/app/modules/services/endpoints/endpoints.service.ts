@@ -22,17 +22,19 @@ export class EndpointsService {
 
     if(elementId === "yearCalendar") {
       headers = this.headerRequest();
+    } else if (elementId === "yearTBA") {
+      headers = this.headerYearTBA();
     } else {
-      headers = this.headerTelegram();
-    } 
+      headers = this.headerYear2025();
+    }
 
     const data = 'fields name, slug, platforms.name, first_release_date, involved_companies.company.name; limit 300; where first_release_date >= ' + 
-      initialUNIX + ' & first_release_date <= ' + finishUNIX + ' & version_parent = null; sort first_release_date asc;'
+      initialUNIX + ' & first_release_date <= ' + finishUNIX + ' & version_parent = null & hypes >= 5; sort first_release_date asc;'
 
     let response = this.http.post(dataURL, data, { headers });
 
     if(response) {
-      let varTable = this.utils.createElementNode(elementId, appendTable);  
+      let varTable = this.utils.createElementNode(elementId, appendTable); 
 
       response.subscribe((data: any) => {
         data = data.map((item: any) => {
@@ -47,7 +49,7 @@ export class EndpointsService {
         });
         this.utils.postCalendarList(data, varTable);
       });
-    } 
+    }
   }
 
   headerRequest () {
@@ -59,11 +61,20 @@ export class EndpointsService {
     });
   }
 
-  headerTelegram () {
+  headerYearTBA () {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': Constantes.BEARER_TELEGRAM,
-      'Client-ID': Constantes.CLIENT_ID_TELEGRAM, 
+      'Authorization': Constantes.BEARER_V2,
+      'Client-ID': Constantes.CLIENT_ID_V2,
+      'x-cors-api-key': Constantes.CORS_SH_KEY,
+    });
+  }
+
+  headerYear2025 () {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': Constantes.BEARER_V3,
+      'Client-ID': Constantes.CLIENT_ID_V3,
       'x-cors-api-key': Constantes.CORS_SH_KEY,
     });
   }

@@ -32,7 +32,7 @@ export class UtilsText {
     const div = document.createElement("li");
 
     div.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center");
-    div.setAttribute("style", "background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); animation: progress-bar-stripes 1s linear infinite; background-size: 1rem 1rem; background-color: green");
+    div.setAttribute("style", "background-color: green");
     div.innerHTML = cadena;
     app?.appendChild(div);
   }
@@ -45,7 +45,7 @@ export class UtilsText {
     const div = document.createElement("li");
 
     div.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center");
-    div.setAttribute("style", "background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); animation: progress-bar-stripes 1s linear infinite; background-size: 1rem 1rem; background-color: grey");
+    div.setAttribute("style", "background-color: grey");
     div.innerHTML = cadena;
     app?.appendChild(div);
   }
@@ -58,7 +58,7 @@ export class UtilsText {
     const div = document.createElement("li");
 
     div.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center");
-    div.setAttribute("style", "background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); animation: progress-bar-stripes 1s linear infinite; background-size: 1rem 1rem; background-color: blue");
+    div.setAttribute("style", "background-color: blue");
     div.innerHTML = cadena;
     app?.appendChild(div);
   }
@@ -71,7 +71,7 @@ export class UtilsText {
     const div = document.createElement("li");
 
     div.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center");
-    div.setAttribute("style", "background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); animation: progress-bar-stripes 1s linear infinite; background-size: 1rem 1rem; background-color: green");
+    div.setAttribute("style", "background-color: green");
     div.innerHTML = cadena;
     app?.appendChild(div);
   }
@@ -98,5 +98,17 @@ export class UtilsText {
     div.innerHTML = cadena;
     app?.appendChild(div);
   }
+
+  createNothingNode(varTable: string) {
+    let cadena = '<div>No hay nada para este mes.</div>';
+
+    const app = document.getElementById(varTable);
+    const div = document.createElement("li");
+
+    div.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center");
+    div.innerHTML = cadena;
+    app?.appendChild(div);
+  }
+
 
 }

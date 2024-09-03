@@ -107,10 +107,15 @@ export class Utils {
   }
 
   postCalendarList(data: any, varTable: string) {
-    data.forEach((item: any) => {
-      let cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.platforms);
-      this.postLabel(item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
-    })
+    if(data.length > 0) {
+      data.forEach((item: any) => {
+        let cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.platforms);
+        this.postLabel(item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
+      })
+    } else {
+      this.utilsText.createNothingNode(varTable);
+    }
+    
   }
 
   postLabel (releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {  
