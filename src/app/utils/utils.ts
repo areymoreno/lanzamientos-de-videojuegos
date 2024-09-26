@@ -7,8 +7,7 @@ import { UtilsText } from './utilsText';
   providedIn: 'root'
 })
 export class Utils {
-
-  private constantes: Constantes = inject(Constantes);
+  
   private utilsBadges: UtilsBadges = inject(UtilsBadges);
   private utilsText: UtilsText = inject(UtilsText);
 
@@ -16,8 +15,6 @@ export class Utils {
 
   NOW_DATE = new Date();
   GAMES_ARRAY = Constantes.STAR_GAMES;
-  PATCH_ARRAY = Constantes.PATCH_GAMES;
-  SEASON_ARRAY = Constantes.SEASON_GAMES;
 
   unixTimeStampToRealDate(unixTimeStamp: number) {
     const miliseconds = unixTimeStamp * 1000;
@@ -44,107 +41,77 @@ export class Utils {
     return false;
   }
 
-  formatDateNow() {
-    let year = this.NOW_DATE.getFullYear();
-    let monthUTC = this.NOW_DATE.getMonth() + 1;
-    let dayUTC = this.NOW_DATE.getDate();
+  formatDateNow(days: number) {
+    let currentDate = new Date(this.NOW_DATE);
+    currentDate.setDate(currentDate.getDate() + days);
+  
+    let year = currentDate.getFullYear();
+    let monthUTC = currentDate.getMonth() + 1;
+    let dayUTC = currentDate.getDate();
 
-    let month = '0';
-    let day = '0';
-
-    if (monthUTC < 10) {
-      month = '0' + monthUTC;
-    } else {
-      month = String(monthUTC);
-    }
-
-    if (dayUTC < 10) {
-      day = '0' + dayUTC;
-    } else {
-      day = String(dayUTC);
-    }
+    let month = monthUTC < 10 ? '0' + monthUTC : String(monthUTC);
+    let day = dayUTC < 10 ? '0' + dayUTC : String(dayUTC);
 
     let dateNow = year + '-' + month + '-' + day;
     return dateNow;
   }
 
-
   createElementNode(elementId: string, appendTable: string) {
-
     let varMonth = "";
     let varTable = "table" + appendTable;
-
-    if(elementId === "yearCalendar") {
-      Constantes.MONTHS_YEAR.forEach(element => {
-        if (element.append === appendTable) {
-          varMonth = element.opcion;
-        }
-      });
-    } else if(elementId === "yearTBA") {
-      Constantes.MONTHS_YEAR_TBA.forEach(element => {
-        if (element.append === appendTable) {
-          varMonth = element.opcion;
-        }
-      });
-    } else if(elementId === "yearQuarters") {
-      Constantes.GAMES_YEAR_TBA.forEach(element => {
-        if (element.append === appendTable) {
-          varMonth = element.opcion;
-        }
-      });
-    }    
-
-    let cadena = '<div id="month"><h4 style="padding: 10px;">' + varMonth + '</h4><ul id="' + varTable + '" class="list-group"></ul></div>';
-
+  
+    const constantMap: { [key: string]: any[] } = {
+      "actualYear": Constantes.MONTHS_YEAR,
+      "actualTBA": Constantes.ACTUAL_YEAR_TBA,
+      "nextYear": Constantes.MONTHS_YEAR,
+      "nextYearTBA": Constantes.GAMES_YEAR_TBA,
+    };
+  
+    const selectedArray = constantMap[elementId];
+  
+    if (selectedArray) {
+      const matchedElement = selectedArray.find(element => element.append === appendTable);
+      if (matchedElement) {
+        varMonth = matchedElement.opcion;
+      }
+    }
+  
+    let cadena = `<div id="month"><h4 style="padding: 10px;">${varMonth}</h4><ul id="${varTable}" class="list-group"></ul></div>`;
     const app = document.getElementById(elementId);
     const div = document.createElement("div");
-
+  
     div.setAttribute("class", "col-md-6");
     div.innerHTML = cadena;
     app?.appendChild(div);
-    
+  
     return varTable;
   }
-
-  postCalendarList(data: any, varTable: string) {
-    if(data.length > 0) {
-      data.forEach((item: any) => {
-        let cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.platforms);
-        this.postLabel(item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
-      })
-    } else {
+  
+  postCalendarList(data: any[], varTable: string) {
+    if (data.length === 0) {
       this.utilsText.createNothingNode(varTable);
+      return;
     }
-    
-  }
+  
+    data.forEach((item: any) => {
+      const cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.platforms);
+      this.postLabel(item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
+    });
+  }  
 
-  postLabel (releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {  
-
-    let boolName, boolSeason, boolPatch;
-
+  postLabel(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {  
     const nameToFind = name;
-
-    const nameToSearch = this.GAMES_ARRAY.findIndex(elemento => elemento === nameToFind);
-    const seasonToSearch = this.SEASON_ARRAY.findIndex(elemento => elemento === nameToFind);
-    const patchToSearch = this.PATCH_ARRAY.findIndex(elemento => elemento === nameToFind);
-
-    boolName = this.isBoolean(nameToSearch);
-    boolSeason = this.isBoolean(seasonToSearch);
-    boolPatch = this.isBoolean(patchToSearch);
-
-      if (boolName && (!varTable.includes("TBA"))) {
-        this.utilsText.createStarNode(releaseDate, name, slug, cadenaPlatforms, varTable);
-      } else if (boolSeason) {
-        this.utilsText.createSeasonNode(releaseDate, name, slug, cadenaPlatforms, varTable);
-      } else if (boolPatch) {
-        this.utilsText.createExpansionNode(releaseDate, name, slug, cadenaPlatforms, varTable);
-      } else if ((boolName) && (varTable.includes("TBA"))) {
-        this.utilsText.createStarTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
-      } else if (varTable.includes("TBA")) {
-        this.utilsText.createTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
-      } else {
-        this.utilsText.createStandardNode(releaseDate, name, slug, cadenaPlatforms, varTable);
-      }
-
+    const nameToSearch = this.GAMES_ARRAY.includes(nameToFind);
+    const isTBA = varTable.includes("TBA");
+  
+    if (nameToSearch && !isTBA) {
+      this.utilsText.createStarNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+    } else if (nameToSearch && isTBA) {
+      this.utilsText.createStarTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
+    } else if (isTBA) {
+      this.utilsText.createTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
+    } else {
+      this.utilsText.createStandardNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+    }
   }
 }

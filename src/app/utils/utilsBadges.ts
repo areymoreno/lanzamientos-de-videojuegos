@@ -11,108 +11,92 @@ export class UtilsBadges {
   constructor() { }
 
   getPlatformsArray(platforms: any) {
-    let playstation = 0;
-    let xbox = 0;
-    let nintendo = 0;
-    let pc = 0;
-    let smartphone = 0;
-    let apple = 0;
+    // Define the type for platform counts
+    type PlatformCounts = {
+      playstation: number;
+      xbox: number;
+      nintendo: number;
+      pc: number;
+      smartphone: number;
+      apple: number;
+      meta: number;
+      psvr2: number;
+      vr: number;
+    };
 
-    let meta = 0;
-    let psvr2 = 0;
-    let vr = 0;
+    const platformCounts: PlatformCounts = {
+      playstation: 0,
+      xbox: 0,
+      nintendo: 0,
+      pc: 0,
+      smartphone: 0,
+      apple: 0,
+      meta: 0,
+      psvr2: 0,
+      vr: 0
+    };
+
+    // Define the type for platform IDs
+    const platformIds: { [key: string]: number[] } = {
+      playstation: [48, 167],
+      xbox: [49, 169],
+      nintendo: [130],
+      pc: [6],
+      apple: [14],
+      smartphone: [39, 34],
+      meta: [386, 471],
+      psvr2: [390],
+      vr: [163]
+    };
 
     platforms.forEach((item: any) => {
-      switch (item.id) {
-        case 48:
-          playstation++;
-          break;
-        case 167:
-          playstation++;
-          break;
-        case 49:
-          xbox++;
-          break;
-        case 169:
-          xbox++;
-          break;
-        case 130:
-          nintendo++;
-          break;
-        case 6:
-          pc++;
-          break;
-        case 14:
-          apple++;
-          break;
-        case 39:
-          smartphone++;
-          break;
-        case 34:
-          smartphone++;
-          break;
-        case 386: // Meta Quest 2
-          meta++;
-          break;
-        case 471: // Meta Quest 3
-          meta++;
-          break;
-        case 390: // PSVR2
-          psvr2++;
-          break;
-        case 163: // SteamVR
-          vr++;
-          break;
+      for (const platform in platformIds) {
+        if (platformIds[platform].includes(item.id)) {
+          platformCounts[platform as keyof PlatformCounts]++;
+        }
       }
     });
 
-    return this.postPlatforms(playstation, xbox, nintendo, pc, smartphone, apple, meta, psvr2, vr);
+    return this.postPlatforms(
+      platformCounts.playstation,
+      platformCounts.xbox,
+      platformCounts.nintendo,
+      platformCounts.pc,
+      platformCounts.smartphone,
+      platformCounts.apple,
+      platformCounts.meta,
+      platformCounts.psvr2,
+      platformCounts.vr
+    );
   }
 
   postPlatforms(playstation: number, xbox: number, nintendo: number, pc: number, smartphone: number, apple: number, meta: number, psvr2: number, vr: number) {
+    const platforms = [
+      { condition: playstation, badgeClass: 'text-bg-primary', title: 'PlayStation', icon: 'bi-playstation' },
+      { condition: xbox, badgeClass: 'text-bg-success', title: 'Xbox', icon: 'bi-xbox' },
+      { condition: nintendo, badgeClass: 'text-bg-danger', title: 'Nintendo Switch', icon: 'bi-nintendo-switch' },
+      { condition: pc, badgeClass: 'text-bg-secondary', title: 'Windows', icon: 'bi-windows' },
+      { condition: apple, badgeClass: 'text-bg-dark', title: 'Apple', icon: 'bi-apple' },
+      { condition: meta, badgeClass: 'text-bg-info', title: 'Meta Quest', icon: 'bi-headset-vr' },
+      { condition: psvr2, badgeClass: 'text-bg-primary', title: 'PlayStation VR2', icon: 'bi-headset-vr' },
+      { condition: vr, badgeClass: 'text-bg-secondary', title: 'Steam VR', icon: 'bi-headset-vr' },
+      { condition: smartphone, badgeClass: 'border border-dark text-bg-light', title: 'Smartphone', icon: 'bi-phone-fill' },
+    ];
+
     let cadena = '';
 
-    if (playstation) {
-      cadena = cadena + '<span class="badge text-bg-primary" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="PlayStation"><i class="bi bi-playstation"></i></span>';
-    }
+    platforms.forEach(platform => {
+      if (platform.condition) {
+        cadena += `<span class="badge ${platform.badgeClass}" style="margin: 3px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${platform.title}"><i class="bi ${platform.icon}"></i></span>`;
+      }
+    });
 
-    if (xbox) {
-      cadena = cadena + '<span class="badge text-bg-success" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Xbox"><i class="bi bi-xbox"></i></span>';
-    }
-
-    if (nintendo) {
-      cadena = cadena + '<span class="badge text-bg-danger" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nintendo Switch"><i class="bi bi-nintendo-switch"></i></span>';
-    }
-
-    if (pc) {
-      cadena = cadena + '<span class="badge text-bg-secondary" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Windows"><i class="bi bi-windows"></i></span>';
-    }
-
-    if (apple) {
-      cadena = cadena + '<span class="badge text-bg-dark" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Apple"><i class="bi bi-apple" ></i></span>';
-    }
-
-    if (meta) {
-      cadena = cadena + '<span class="badge text-bg-info" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Meta Quest"><i class="bi bi-headset-vr"></i></span>';
-    }
-
-    if (psvr2) {
-      cadena = cadena + '<span class="badge text-bg-primary" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="PlayStation VR2"><i class="bi bi-headset-vr"></i></span>';
-    }
-
-    if (vr) {
-      cadena = cadena + '<span class="badge text-bg-secondary" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Steam VR"><i class="bi bi-headset-vr"></i></span>';
-    }
-
-    if (smartphone) {
-      cadena = cadena + '<span class="badge border border-dark text-bg-light" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Smartphone"><i class="bi bi-phone-fill"></i></span>';
-    }
-
-    if ((!playstation) && (!xbox) && (!pc) && (!nintendo) && (!apple) && (!meta) && (!psvr2) && (!vr) && (!smartphone)) {
-      cadena = cadena + '<span class="badge text-bg-warning" style="margin: 0px 5px 0px 5px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Varias plataformas"><i class="bi bi-question-square-fill"></i></span>';
+    if (platforms.every(platform => !platform.condition)) {
+      cadena += '<span class="badge text-bg-warning" style="margin: 3px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Varias plataformas"><i class="bi bi-question-square-fill"></i></span>';
     }
 
     return cadena;
   }
+
 
 }

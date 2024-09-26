@@ -8,10 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { FooterComponent } from './modules/footer/footer.component';
-import { OptionsComponent } from './modules/options/options.component';
 import { Constantes } from './utils/constantes';
 import { HomeComponent } from './modules/components/home/home.component';
-import { PastComponent } from './modules/components/past/past.component';
 import { ModalComponent } from './modules/modal/modal.component';
 
 
@@ -20,9 +18,7 @@ import { ModalComponent } from './modules/modal/modal.component';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    OptionsComponent,
     HomeComponent,
-    PastComponent,
     ModalComponent
   ],
   imports: [

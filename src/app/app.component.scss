@@ -65,26 +65,15 @@ a, ul, li {
 }
 
 .colabLogo {
-  margin-right: 15px;
-}
-
-.hVideojuegos {
-  border-radius: 5px;
-}
-
-.kButton {
-  border-radius: 5px;
-  background-color: #29abe0;
-}
-
-.iGaming {
-  border-radius: 5px;
-  border-width: 5px;
-  border-color: #ffffff; 
+  margin-right: 10px;
 }
 
 .logoWeb {
   width: 300px;
+}
+
+.bg-darkblue {
+  background-color: #000545;
 }
 
 @media screen and (min-width: 340px) and (max-width: 1280px) {
@@ -114,4 +103,16 @@ a, ul, li {
 
 li::marker {
   display: none;
+}
+
+.divYearMargin {
+  margin-top: 25px;
+}
+
+
+
+@media (max-width: 768px) {
+  .hiddenCabecera {
+    display: none;
+  }
 }
