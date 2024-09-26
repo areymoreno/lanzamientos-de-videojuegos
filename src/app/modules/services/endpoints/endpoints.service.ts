@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Utils } from 'src/app/utils/utils';
-import { Constantes } from 'src/app/utils/constantes';
+import { Keys } from 'src/app/utils/keys';
 import { UtilsHeader } from 'src/app/utils/utilsHeader';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class EndpointsService {
     
     let initialUNIX = this.utils.realDateToUnixTimeStamp(initialDate);
     let finishUNIX = this.utils.realDateToUnixTimeStamp(finishDate);
-    let dataURL = Constantes.CORS_SH + "https://api.igdb.com/v4/games/";
+    let dataURL = Keys.CORS_SH + "https://api.igdb.com/v4/games/";
     let headers;
 
     if(elementId === "yearCalendar") {
@@ -57,7 +57,7 @@ export class EndpointsService {
     
     let initialUNIX = this.utils.realDateToUnixTimeStamp(initialDate);
     let finishUNIX = this.utils.realDateToUnixTimeStamp(finishDate);
-    let dataURL = Constantes.CORS_SH + "https://api.igdb.com/v4/games/";
+    let dataURL = Keys.CORS_SH + "https://api.igdb.com/v4/games/";
     let headers = this.headerPlusDay();
 
     const data = 'fields name, slug, platforms.name, first_release_date, cover.url; limit 300; where first_release_date >= ' + 
@@ -84,27 +84,27 @@ export class EndpointsService {
   headerRequest () {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': Constantes.BEARER_FINAL,
-      'Client-ID': Constantes.CLIENT_ID, 
-      'x-cors-api-key': Constantes.CORS_SH_KEY,
+      'Authorization': Keys.BEARER_FINAL,
+      'Client-ID': Keys.CLIENT_ID, 
+      'x-cors-api-key': Keys.CORS_SH_KEY,
     });
   }
 
   headerYearTBA () {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': Constantes.BEARER_V2,
-      'Client-ID': Constantes.CLIENT_ID_V2,
-      'x-cors-api-key': Constantes.CORS_SH_KEY,
+      'Authorization': Keys.BEARER_V2,
+      'Client-ID': Keys.CLIENT_ID_V2,
+      'x-cors-api-key': Keys.CORS_SH_KEY,
     });
   }
 
   headerPlusDay () {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': Constantes.BEARER_V3,
-      'Client-ID': Constantes.CLIENT_ID_V3,
-      'x-cors-api-key': Constantes.CORS_SH_KEY,
+      'Authorization': Keys.BEARER_V3,
+      'Client-ID': Keys.CLIENT_ID_V3,
+      'x-cors-api-key': Keys.CORS_SH_KEY,
     });
   }
   

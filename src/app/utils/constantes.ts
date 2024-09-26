@@ -1,112 +1,91 @@
 export class Constantes {
 
-  static readonly CORS_SH = 'https://proxy.cors.sh/';
-  static readonly CORS_SH_KEY = "";
-
-  static readonly CLIENT_ID = "";
-  static readonly BEARER_FINAL = "Bearer ";
-
   static readonly STAR_GAMES = [
     "2XKO",
     "Anno 117: Pax Romana",
     "Ace Attorney Investigations Collection",
-    "Alone in the Dark",
     "Assassin's Creed Shadows",
     "Avowed",
     "Apollo Justice: Ace Attorney Trilogy",
-    "Banishers: Ghosts of New Eden",
     "Batman: Arkham Shadow",
-    "Beyond Good & Evil - 20th Anniversary Edition",
-    "Brothers: A Tale of Two Sons",
     "Call of Duty: Black Ops 6",
+    "Diablo IV: Vessel of Hatred",
     "Death Stranding 2: On The Beach",
-    "Deep Rock Galactic: Survivor",
-    "Destiny 2: The Final Shape",
     "Dragon Ball: Sparking! Zero",
     "Dragon Age: The Veilguard",
-    "Dragon's Dogma II",
     "Doom: The Dark Ages",
     "EA Sports FC 25",
-    "Eastward: Octopia!",
-    "Eiyuden Chronicle: Hundred Heroes",
-    "Elden Ring: Shadow of the Erdtree",
-    "Epic Mickey: Rebrushed",
-    "Final Fantasy VII Rebirth",
-    "Final Fantasy XVI: The Rising Tide",
-    "Frostpunk 2",
     "Grand Theft Auto VI",
-    "Helldivers 2",
-    "Homeworld 3",
+    "Horizon Zero Dawn Remastered",
     "Indiana Jones and the Great Circle",
     "Inazuma Eleven: Victory Road",
     "Just Dance VR",
     "Just Dance 2025 Edition",
+    "Kingdom Come: Deliverance II",
     "LEGO Horizon Adventures",
-    "Like a Dragon: Infinite Wealth",
+    "Like a Dragon: Pirate Yakuza in Hawaii",
     "Little Nightmares III",
     "Luigi's Mansion 2 HD",
+    "Metro Awakening VR",
     "Mafia: The Old Country",
-    "Manor Lords",
-    "Mario vs. Donkey Kong",
     "Mario & Luigi: Brothership",
     "Marvel 1943: Rise of Hydra",
     "Metaphor: ReFantazio",
     "Metal Gear Solid Delta: Snake Eater",
-    "Nightingale",
-    "Paper Mario: The Thousand-Year Door",
-    "Persona 3 Reload",
+    "Monster Hunter Wilds",
     "Pokémon Legends: Z-A",
-    "Prince of Persia: The Lost Crown",
-    "Prison Architect 2",
     "Professor Layton and the New World of Steam",
-    "Rise of the Ronin",
-    "Sand Land",
-    "Senua's Saga: Hellblade II",
     "Sid Meier's Civilization VII",
-    "Shin Megami Tensei V: Vengeance",
     "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
-    "Star Wars Outlaws",
-    "Space Marine VR - Defenders of Avarax",
-    "Stellar Blade",
-    "Suicide Squad: Kill the Justice League",
-    "Suikoden I & II HD Remaster: Gate Rune and Dunan Unification Wars",
-    "Tekken 8",
+    "Sonic X Shadow Generations",
     "The Legend of Zelda: Echoes of Wisdom",
-    "The Plucky Squire",
-    "The Rogue Prince of Persia",
     "The Wolf Among Us 2",
     "Tom Clancy's The Division: Resurgence",
-    "Tomb Raider I•II•III Remastered",
-    "Unicorn Overlord",
-    "Until Dawn",
-    "Vampire: The Masquerade - Bloodlines 2",
-    "Visions of Mana",
-    "Warhammer 40,000: Space Marine II",
-    "Warhammer 40,000: Rogue Trader - Void Shadows"];
+    "Until Dawn"];
 
-  static readonly SEASON_GAMES = [
-    ""
-  ]
+  static readonly ACTUAL_YEAR = [
+    { start: "2024-01-01", end: "2024-01-31", label: "ENE" },
+    { start: "2024-02-01", end: "2024-02-29", label: "FEB" },
+    { start: "2024-03-01", end: "2024-03-30", label: "MAR" },
+    { start: "2024-04-01", end: "2024-04-30", label: "ABR" },
+    { start: "2024-05-01", end: "2024-05-31", label: "MAY" },
+    { start: "2024-06-01", end: "2024-06-29", label: "JUN" },
+    { start: "2024-07-01", end: "2024-07-31", label: "JUL" },
+    { start: "2024-08-01", end: "2024-08-31", label: "AGO" },
+    { start: "2024-09-01", end: "2024-09-30", label: "SEP" },
+    { start: "2024-10-01", end: "2024-10-31", label: "OCT" },
+    { start: "2024-11-01", end: "2024-11-30", label: "NOV" },
+    { start: "2024-12-01", end: "2024-12-30", label: "DIC" }
+  ];
 
-  static readonly PATCH_GAMES = [
-    "Alan Wake II: Night Springs",
-    "Diablo IV: Vessel of Hatred",
-    "Fallout 4: Next-Gen Update",
-    "Guild Wars 2: Janthir Wilds",
-    "V Rising: Legacy of Castlevania",
-    "Vampire Survivors: Operation Guns",
-    "Persona 3 Reload: Episode Aigis",
-    "Final Fantasy XIV: Dawntrail",
-    "The Crew: Motorfest - Season 5",
-    "World of Warcraft: The War Within"
-  ]
+  static readonly ACTUAL_TBA_YEAR = [
+    { start: "2024-03-31", end: "2024-01-31", label: "Q1TBA" },
+    { start: "2024-06-30", end: "2024-06-30", label: "Q2TBA" },
+    { start: "2024-09-30", end: "2024-09-30", label: "Q3TBA" },
+    { start: "2024-12-31", end: "2024-12-31", label: "Q4TBA" }
+  ];
 
-  static readonly PREMIUM_PACK = [
-    "Ace Combat 7: Skies Unknown Deluxe Edition",
-    "Assassin's Creed Shadows: Thrown to the Dogs",
-    "Persona 3 Reload: Velvet Costume & BGM Set",
-    "V Rising: Legacy of Castlevania - Premium Pack"
-  ]
+  static readonly NEXT_YEAR = [
+    { start: "2025-01-01", end: "2025-01-31", label: "ENE" },
+    { start: "2025-02-01", end: "2025-02-29", label: "FEB" },
+    { start: "2025-03-01", end: "2025-03-30", label: "MAR" },
+    { start: "2025-04-01", end: "2025-04-30", label: "ABR" },
+    { start: "2025-05-01", end: "2025-05-31", label: "MAY" },
+    { start: "2025-06-01", end: "2025-06-29", label: "JUN" },
+    { start: "2025-07-01", end: "2025-07-31", label: "JUL" },
+    { start: "2025-08-01", end: "2025-08-31", label: "AGO" },
+    { start: "2025-09-01", end: "2025-09-30", label: "SEP" },
+    { start: "2025-10-01", end: "2025-10-31", label: "OCT" },
+    { start: "2025-11-01", end: "2025-11-30", label: "NOV" },
+    { start: "2025-12-01", end: "2025-12-30", label: "DIC" }
+  ];
+
+  static readonly NEXT_TBA_YEAR = [
+    { start: "2025-03-31", end: "2025-01-31", label: "Q1TBA" },
+    { start: "2025-06-30", end: "2025-06-30", label: "Q2TBA" },
+    { start: "2025-09-30", end: "2025-09-30", label: "Q3TBA" },
+    { start: "2025-12-31", end: "2025-12-31", label: "Q4TBA" }
+  ];
 
   static readonly MONTHS_YEAR = [
     { opcion: 'Enero', valor: 1, append: 'ENE' },
@@ -124,6 +103,14 @@ export class Constantes {
   ]
 
   static readonly GAMES_YEAR_TBA = [
+    { opcion: 'Q1 2025', valor: 0, append: 'Q1TBA'},
+    { opcion: 'Q2 2025', valor: 1, append: 'Q2TBA'},
+    { opcion: 'Q3 2025', valor: 2, append: 'Q3TBA'},
+    { opcion: 'Q4 2025', valor: 3, append: 'Q4TBA'}
+  ]
+
+  static readonly ACTUAL_YEAR_TBA = [
+    { opcion: 'Q1 2024', valor: 0, append: 'Q1TBA'},
     { opcion: 'Q2 2024', valor: 1, append: 'Q2TBA'},
     { opcion: 'Q3 2024', valor: 2, append: 'Q3TBA'},
     { opcion: 'Q4 2024', valor: 3, append: 'Q4TBA'}
@@ -143,4 +130,16 @@ export class Constantes {
     { opcion: 'Noviembre', valor: 11, append: 'NOVTBA' },
     { opcion: 'Diciembre', valor: 12, append: 'DICTBA' }
   ]
+
+  static readonly platformIds: { [key: string]: number[] } = {
+    playstation: [48, 167],
+    xbox: [49, 169],
+    nintendo: [130],
+    pc: [6],
+    apple: [14],
+    smartphone: [39, 34],
+    meta: [386, 471],
+    psvr2: [390],
+    vr: [163]
+  };
 }
