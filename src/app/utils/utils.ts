@@ -15,6 +15,7 @@ export class Utils {
 
   NOW_DATE = new Date();
   GAMES_ARRAY = Constantes.STAR_GAMES;
+  DLC_ARRAY = Constantes.STAR_DLC;
 
   unixTimeStampToRealDate(unixTimeStamp: number) {
     const miliseconds = unixTimeStamp * 1000;
@@ -102,14 +103,19 @@ export class Utils {
   postLabel(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {  
     const nameToFind = name;
     const nameToSearch = this.GAMES_ARRAY.includes(nameToFind);
+    const dlcToSearch = this.DLC_ARRAY.includes(nameToFind);
     const isTBA = varTable.includes("TBA");
   
     if (nameToSearch && !isTBA) {
       this.utilsText.createStarNode(releaseDate, name, slug, cadenaPlatforms, varTable);
     } else if (nameToSearch && isTBA) {
-      this.utilsText.createStarTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
+      this.utilsText.createStarTBANode(name, slug, cadenaPlatforms, varTable);
+    } else if (dlcToSearch && !isTBA) {
+      this.utilsText.createExpansionNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+    } else if (dlcToSearch && isTBA) {
+      this.utilsText.createExpansionTBANode(name, slug, cadenaPlatforms, varTable);
     } else if (isTBA) {
-      this.utilsText.createTBANode(releaseDate, name, slug, cadenaPlatforms, varTable);
+      this.utilsText.createTBANode(name, slug, cadenaPlatforms, varTable);
     } else {
       this.utilsText.createStandardNode(releaseDate, name, slug, cadenaPlatforms, varTable);
     }

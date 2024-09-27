@@ -9,7 +9,6 @@ export class Constantes {
     "Apollo Justice: Ace Attorney Trilogy",
     "Batman: Arkham Shadow",
     "Call of Duty: Black Ops 6",
-    "Diablo IV: Vessel of Hatred",
     "Death Stranding 2: On The Beach",
     "Dragon Ball: Sparking! Zero",
     "Dragon Age: The Veilguard",
@@ -41,7 +40,21 @@ export class Constantes {
     "The Legend of Zelda: Echoes of Wisdom",
     "The Wolf Among Us 2",
     "Tom Clancy's The Division: Resurgence",
-    "Until Dawn"];
+    "Until Dawn"
+  ];
+
+  static readonly STAR_DLC = [
+    "Alan Wake II: The Lake House",
+    "Diablo IV: Vessel of Hatred",
+    "Fallout 4: Next-Gen Update",
+    "Guild Wars 2: Janthir Wilds",
+    "V Rising: Legacy of Castlevania",
+    "Vampire Survivors: Operation Guns",
+    "Persona 3 Reload: Episode Aigis",
+    "Final Fantasy XIV: Dawntrail",
+    "The Crew: Motorfest - Season 5",
+    "World of Warcraft: The War Within"
+  ]
 
   static readonly ACTUAL_YEAR = [
     { start: "2024-01-01", end: "2024-01-31", label: "ENE" },
