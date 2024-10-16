@@ -40,6 +40,35 @@ export class UtilsText {
     app?.appendChild(div);
   }
 
+  createNotNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string, options: any = {}) {
+    const {
+      backgroundColor = 'white',
+      icon = '',
+      iconColor = '',
+      extraText = '',
+      textColor = 'black',
+      hasReleaseDate = true
+    } = options;
+
+    // Condicional para mostrar o no la fecha de lanzamiento
+    const releaseText = hasReleaseDate ? releaseDate + ' - ' : '';
+
+    let cadena = `<div style="color: ${textColor};">
+        ${releaseText}${icon ? `<i class="${icon}" style="color: ${iconColor}; text-shadow: 0 0 10px black;"></i>` : ''} 
+        ${extraText}${name}
+      </div>
+      <div class="text-end">${cadenaPlatforms}</div>`;
+
+    const app = document.getElementById(varTable);
+    const div = document.createElement("li");
+
+    div.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center");
+    div.setAttribute("style", `background-color: ${backgroundColor};`);
+    div.innerHTML = cadena;
+    app?.appendChild(div);
+  }
+
+
   // Funciones específicas con diferentes configuraciones
 
   createStandardNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
@@ -104,7 +133,7 @@ export class UtilsText {
   }
 
   createNothingNode(varTable: string) {
-    this.createNode('', 'No hay nada para este mes.', '', '', varTable, {
+    this.createNotNode('', 'No hay nada para este mes.', '', '', varTable, {
       hasReleaseDate: false
     });
   }

@@ -33,23 +33,23 @@ export class HomeComponent {
 
     Constantes.ACTUAL_YEAR.forEach(month => {
       this.automaticCalendar(this.actualYear, month.start, month.end, dateNOW, month.label);
-      this.sleep(500);
+      this.sleep(1000);
     });
 
     Constantes.ACTUAL_TBA_YEAR.forEach(month => {
       this.automaticCalendar(this.actualTBA, month.start, month.end, dateNOW, month.label);
-      this.sleep(500);
+      this.sleep(1000);
     });
 
-    //Constantes.NEXT_YEAR.forEach(month => {
-    //  this.automaticCalendar(this.nextYear, month.start, month.end, dateNOW, month.label);
-    //  this.sleep(500);
-    //});
+    Constantes.NEXT_YEAR.forEach(month => {
+      this.automaticCalendar(this.nextYear, month.start, month.end, dateNOW, month.label);
+      this.sleep(1000);
+    });
 
-    //Constantes.NEXT_TBA_YEAR.forEach(month => {
-    //  this.automaticCalendar(this.nextYearTBA, month.start, month.end, dateNOW, month.label);
-    //  this.sleep(500);
-    //});
+    Constantes.NEXT_TBA_YEAR.forEach(month => {
+      this.automaticCalendar(this.nextYearTBA, month.start, month.end, dateNOW, month.label);
+      this.sleep(1000);
+    });
   
   }
 

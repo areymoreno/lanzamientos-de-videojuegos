@@ -22,12 +22,14 @@ export class EndpointsService {
     let dataURL = Keys.CORS_SH + "https://api.igdb.com/v4/games/";
     let headers;
 
-    if(elementId === "yearCalendar") {
-      headers = this.headerRequest();
-    } else if (elementId === "yearTBA") {
-      headers = this.headerYearTBA();
+    if (elementId === "actualYear") {
+      headers = this.headerV2();
+    } else if(elementId === "actualTBA") {
+      headers = this.headerV3();
+    } else if(elementId === "nextYear") {
+      headers = this.headerV4();
     } else {
-      headers = this.headerPlusDay();
+      headers = this.headerV5();
     }
 
     const data = 'fields name, slug, platforms.name, first_release_date, involved_companies.company.name; limit 300; where first_release_date >= ' + 
@@ -58,7 +60,7 @@ export class EndpointsService {
     let initialUNIX = this.utils.realDateToUnixTimeStamp(initialDate);
     let finishUNIX = this.utils.realDateToUnixTimeStamp(finishDate);
     let dataURL = Keys.CORS_SH + "https://api.igdb.com/v4/games/";
-    let headers = this.headerPlusDay();
+    let headers = this.headerV1();
 
     const data = 'fields name, slug, platforms.name, first_release_date, cover.url; limit 300; where first_release_date >= ' + 
       initialUNIX + ' & first_release_date <= ' + finishUNIX + ' & version_parent = null & hypes >= 3; sort first_release_date asc; limit 14;'
@@ -81,7 +83,7 @@ export class EndpointsService {
     }
   }
 
-  headerRequest () {
+  headerV1 () {
     return new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': Keys.BEARER_FINAL,
@@ -90,7 +92,7 @@ export class EndpointsService {
     });
   }
 
-  headerYearTBA () {
+  headerV2 () {
     return new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': Keys.BEARER_V2,
@@ -99,11 +101,29 @@ export class EndpointsService {
     });
   }
 
-  headerPlusDay () {
+  headerV3 () {
     return new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': Keys.BEARER_V3,
       'Client-ID': Keys.CLIENT_ID_V3,
+      'x-cors-api-key': Keys.CORS_SH_KEY,
+    });
+  }
+
+  headerV4 () {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': Keys.BEARER_V4,
+      'Client-ID': Keys.CLIENT_ID_V4,
+      'x-cors-api-key': Keys.CORS_SH_KEY,
+    });
+  }
+
+  headerV5 () {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': Keys.BEARER_V5,
+      'Client-ID': Keys.CLIENT_ID_V5,
       'x-cors-api-key': Keys.CORS_SH_KEY,
     });
   }
