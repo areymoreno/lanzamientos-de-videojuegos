@@ -41,15 +41,15 @@ export class HomeComponent {
       this.sleep(1000);
     });
 
-    Constantes.NEXT_YEAR.forEach(month => {
-      this.automaticCalendar(this.nextYear, month.start, month.end, dateNOW, month.label);
-      this.sleep(1000);
-    });
+    // Constantes.NEXT_YEAR.forEach(month => {
+    //   this.automaticCalendar(this.nextYear, month.start, month.end, dateNOW, month.label);
+    //   this.sleep(1000);
+    // });
 
-    Constantes.NEXT_TBA_YEAR.forEach(month => {
-      this.automaticCalendar(this.nextYearTBA, month.start, month.end, dateNOW, month.label);
-      this.sleep(1000);
-    });
+    // Constantes.NEXT_TBA_YEAR.forEach(month => {
+    //   this.automaticCalendar(this.nextYearTBA, month.start, month.end, dateNOW, month.label);
+    //   this.sleep(1000);
+    // });
   
   }
 

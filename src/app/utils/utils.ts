@@ -64,7 +64,7 @@ export class Utils {
     const constantMap: { [key: string]: any[] } = {
       "actualYear": Constantes.MONTHS_YEAR,
       "actualTBA": Constantes.ACTUAL_YEAR_TBA,
-      "nextYear": Constantes.MONTHS_YEAR,
+      "nextYear": Constantes.MONTHS_YEAR_TBA,
       "nextYearTBA": Constantes.GAMES_YEAR_TBA,
     };
   

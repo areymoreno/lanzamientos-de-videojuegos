@@ -62,28 +62,6 @@ export class Constantes {
   ]
 
   static readonly ACTUAL_YEAR = [
-    { start: "2024-01-01", end: "2024-01-31", label: "ENE" },
-    { start: "2024-02-01", end: "2024-02-29", label: "FEB" },
-    { start: "2024-03-01", end: "2024-03-30", label: "MAR" },
-    { start: "2024-04-01", end: "2024-04-30", label: "ABR" },
-    { start: "2024-05-01", end: "2024-05-31", label: "MAY" },
-    { start: "2024-06-01", end: "2024-06-29", label: "JUN" },
-    { start: "2024-07-01", end: "2024-07-31", label: "JUL" },
-    { start: "2024-08-01", end: "2024-08-31", label: "AGO" },
-    { start: "2024-09-01", end: "2024-09-30", label: "SEP" },
-    { start: "2024-10-01", end: "2024-10-31", label: "OCT" },
-    { start: "2024-11-01", end: "2024-11-30", label: "NOV" },
-    { start: "2024-12-01", end: "2024-12-30", label: "DIC" }
-  ];
-
-  static readonly ACTUAL_TBA_YEAR = [
-    { start: "2024-03-31", end: "2024-01-31", label: "Q1TBA" },
-    { start: "2024-06-30", end: "2024-06-30", label: "Q2TBA" },
-    { start: "2024-09-30", end: "2024-09-30", label: "Q3TBA" },
-    { start: "2024-12-31", end: "2024-12-31", label: "Q4TBA" }
-  ];
-
-  static readonly NEXT_YEAR = [
     { start: "2025-01-01", end: "2025-01-31", label: "ENE" },
     { start: "2025-02-01", end: "2025-02-29", label: "FEB" },
     { start: "2025-03-01", end: "2025-03-30", label: "MAR" },
@@ -98,11 +76,33 @@ export class Constantes {
     { start: "2025-12-01", end: "2025-12-30", label: "DIC" }
   ];
 
-  static readonly NEXT_TBA_YEAR = [
+  static readonly ACTUAL_TBA_YEAR = [
     { start: "2025-03-31", end: "2025-01-31", label: "Q1TBA" },
     { start: "2025-06-30", end: "2025-06-30", label: "Q2TBA" },
     { start: "2025-09-30", end: "2025-09-30", label: "Q3TBA" },
     { start: "2025-12-31", end: "2025-12-31", label: "Q4TBA" }
+  ];
+
+  static readonly NEXT_YEAR = [
+    { start: "2026-01-01", end: "2026-01-31", label: "ENETBA" },
+    { start: "2026-02-01", end: "2026-02-29", label: "FEBTBA" },
+    { start: "2026-03-01", end: "2026-03-30", label: "MARTBA" },
+    { start: "2026-04-01", end: "2026-04-30", label: "ABRTBA" },
+    { start: "2026-05-01", end: "2026-05-31", label: "MAYTBA" },
+    { start: "2026-06-01", end: "2026-06-29", label: "JUNTBA" },
+    { start: "2026-07-01", end: "2026-07-31", label: "JULTBA" },
+    { start: "2026-08-01", end: "2026-08-31", label: "AGOTBA" },
+    { start: "2026-09-01", end: "2026-09-30", label: "SEPTBA" },
+    { start: "2026-10-01", end: "2026-10-31", label: "OCTTBA" },
+    { start: "2026-11-01", end: "2026-11-30", label: "NOVTBA" },
+    { start: "2026-12-01", end: "2026-12-30", label: "DICTBA" }
+  ];
+
+  static readonly NEXT_TBA_YEAR = [
+    { start: "2026-03-31", end: "2026-01-31", label: "Q1TBA" },
+    { start: "2026-06-30", end: "2026-06-30", label: "Q2TBA" },
+    { start: "2026-09-30", end: "2026-09-30", label: "Q3TBA" },
+    { start: "2026-12-31", end: "2026-12-31", label: "Q4TBA" }
   ];
 
   static readonly MONTHS_YEAR = [
@@ -120,18 +120,18 @@ export class Constantes {
     { opcion: 'Diciembre', valor: 12, append: 'DIC' },
   ]
 
-  static readonly GAMES_YEAR_TBA = [
+  static readonly ACTUAL_YEAR_TBA = [
     { opcion: 'Q1 2025', valor: 0, append: 'Q1TBA'},
     { opcion: 'Q2 2025', valor: 1, append: 'Q2TBA'},
     { opcion: 'Q3 2025', valor: 2, append: 'Q3TBA'},
     { opcion: 'Q4 2025', valor: 3, append: 'Q4TBA'}
   ]
 
-  static readonly ACTUAL_YEAR_TBA = [
-    { opcion: 'Q1 2024', valor: 0, append: 'Q1TBA'},
-    { opcion: 'Q2 2024', valor: 1, append: 'Q2TBA'},
-    { opcion: 'Q3 2024', valor: 2, append: 'Q3TBA'},
-    { opcion: 'Q4 2024', valor: 3, append: 'Q4TBA'}
+  static readonly GAMES_YEAR_TBA = [
+    { opcion: 'Q1 2026', valor: 0, append: 'Q1TBA'},
+    { opcion: 'Q2 2026', valor: 1, append: 'Q2TBA'},
+    { opcion: 'Q3 2026', valor: 2, append: 'Q3TBA'},
+    { opcion: 'Q4 2026', valor: 3, append: 'Q4TBA'}
   ]
 
   static readonly MONTHS_YEAR_TBA = [

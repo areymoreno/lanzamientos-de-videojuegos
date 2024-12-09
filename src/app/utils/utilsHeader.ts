@@ -25,7 +25,6 @@ export class UtilsHeader {
   }
 
   replaceImageSize(url: string): string {
-    console.log(url)
     if(url === null) {
       return "https://placehold.co/180x240?text=Ficha+Sin+Imagen";
     } else {
