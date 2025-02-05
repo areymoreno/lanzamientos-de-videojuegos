@@ -95,7 +95,7 @@ export class Utils {
     }
   
     data.forEach((item: any) => {
-      const cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.platforms);
+      const cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.id, item.platforms);
       this.postLabel(item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
     });
   }  
@@ -120,4 +120,5 @@ export class Utils {
       this.utilsText.createStandardNode(releaseDate, name, slug, cadenaPlatforms, varTable);
     }
   }
+
 }

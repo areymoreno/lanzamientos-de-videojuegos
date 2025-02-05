@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/components/home/home.component';
+import { ProfileComponent } from './modules/components/profile/profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, 
   { path: '**', redirectTo: 'home', pathMatch: 'full' }, // Redirige a Home por defecto
 ];

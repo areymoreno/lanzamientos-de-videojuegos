@@ -11,6 +11,7 @@ import { FooterComponent } from './modules/footer/footer.component';
 import { Constantes } from './utils/constantes';
 import { HomeComponent } from './modules/components/home/home.component';
 import { ModalComponent } from './modules/modal/modal.component';
+import { ProfileComponent } from './modules/components/profile/profile.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ModalComponent } from './modules/modal/modal.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
+    ProfileComponent,
     ModalComponent
   ],
   imports: [

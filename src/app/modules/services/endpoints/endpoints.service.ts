@@ -32,8 +32,8 @@ export class EndpointsService {
       headers = this.headerV5();
     }
 
-    const data = 'fields name, slug, platforms.name, first_release_date, involved_companies.company.name; limit 300; where first_release_date >= ' + 
-      initialUNIX + ' & first_release_date <= ' + finishUNIX + ' & version_parent = null & hypes >= 3; sort first_release_date asc;'
+    const data = 'fields id, name, slug, platforms.name, first_release_date, involved_companies.company.name; limit 300; where first_release_date >= ' + 
+      initialUNIX + ' & first_release_date <= ' + finishUNIX + ' & version_parent = null & hypes >= 1; sort first_release_date asc;'
 
     let response = this.http.post(dataURL, data, { headers });
 
@@ -43,6 +43,7 @@ export class EndpointsService {
       response.subscribe((data: any) => {
         data = data.map((item: any) => {
           return {
+            id: item.id,
             releaseDate: this.utils.unixTimeStampToRealDate(item.first_release_date),
             name: item.name,
             platforms: item.platforms,

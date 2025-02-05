@@ -10,7 +10,7 @@ export class UtilsBadges {
 
   constructor() { }
 
-  getPlatformsArray(platforms: any) {
+  getPlatformsArray(id: any, platforms: any) {
     // Define the type for platform counts
     type PlatformCounts = {
       playstation: number;
@@ -58,6 +58,7 @@ export class UtilsBadges {
     });
 
     return this.postPlatforms(
+      id,
       platformCounts.playstation,
       platformCounts.xbox,
       platformCounts.nintendo,
@@ -70,7 +71,7 @@ export class UtilsBadges {
     );
   }
 
-  postPlatforms(playstation: number, xbox: number, nintendo: number, pc: number, smartphone: number, apple: number, meta: number, psvr2: number, vr: number) {
+  postPlatforms(id: number, playstation: number, xbox: number, nintendo: number, pc: number, smartphone: number, apple: number, meta: number, psvr2: number, vr: number) {
     const platforms = [
       { condition: playstation, badgeClass: 'text-bg-primary', title: 'PlayStation', icon: 'bi-playstation' },
       { condition: xbox, badgeClass: 'text-bg-success', title: 'Xbox', icon: 'bi-xbox' },
@@ -96,6 +97,17 @@ export class UtilsBadges {
     }
 
     return cadena;
+  }
+
+  addToFavorites(gameId: number) {
+    let favorites = JSON.parse(localStorage.getItem('favorites') ?? '[]');
+    if (!favorites.includes(gameId)) {
+      favorites.push(gameId);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      alert("Juego agregado a favoritos.");
+    } else {
+      alert("El juego ya está en favoritos.");
+    }
   }
 
 
