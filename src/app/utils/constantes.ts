@@ -7,44 +7,31 @@ export class Constantes {
     "Apollo Justice: Ace Attorney Trilogy",
     "Assassin's Creed Shadows",
     "Avowed",
-    "Batman: Arkham Shadow",
-    "Call of Duty: Black Ops 6",
+    "Clair Obscur: Expedition 33",
     "Death Stranding 2: On The Beach",
     "Doom: The Dark Ages",
-    "Dragon Age: The Veilguard",
-    "Dragon Ball: Sparking! Zero",
-    "EA Sports FC 25",
+    "EA Sports FC 26",
+    "Elden Ring: Nightreign",
+    "Ghost of Yotei",
     "Grand Theft Auto VI",
-    "Horizon Zero Dawn Remastered",
-    "Indiana Jones and the Great Circle",
-    "Inazuma Eleven: Victory Road",
-    "Just Dance 2025 Edition",
-    "Just Dance VR",
     "Kingdom Come: Deliverance II",
-    "Legacy of Kain: Soul Reaver 1 & 2 Remastered",
-    "LEGO Horizon Adventures",
-    "Life is Strange: Double Exposure",
     "Like a Dragon: Pirate Yakuza in Hawaii",
     "Little Nightmares III",
-    "Luigi's Mansion 2 HD",
     "Mafia: The Old Country",
     "Mario & Luigi: Brothership",
     "Marvel 1943: Rise of Hydra",
     "Metal Gear Solid Delta: Snake Eater",
-    "Metaphor: ReFantazio",
-    "Metro Awakening VR",
     "Monster Hunter Wilds",
+    "Ninja Gaiden 4",
     "Pokémon Legends: Z-A",
     "Professor Layton and the New World of Steam",
-    "Red Dead Redemption",
-    "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
     "Sid Meier's Civilization VII",
-    "Silent Hill 2",
-    "Sonic X Shadow Generations",
-    "The Legend of Zelda: Echoes of Wisdom",
+    "Subnautica 2",
+    "The Outer Worlds 2",
     "The Wolf Among Us 2",
     "Tom Clancy's The Division: Resurgence",
-    "Until Dawn"
+    "Until Dawn",
+    "Xenoblade Chronicles X: Definitive Edition"
 ];
 
   static readonly STAR_DLC = [
@@ -63,17 +50,17 @@ export class Constantes {
 
   static readonly ACTUAL_YEAR = [
     { start: "2025-01-01", end: "2025-01-31", label: "ENE" },
-    { start: "2025-02-01", end: "2025-02-29", label: "FEB" },
-    { start: "2025-03-01", end: "2025-03-30", label: "MAR" },
+    { start: "2025-02-01", end: "2025-02-28", label: "FEB" },
+    { start: "2025-03-01", end: "2025-03-30", label: "MAR" }, //Q1
     { start: "2025-04-01", end: "2025-04-30", label: "ABR" },
     { start: "2025-05-01", end: "2025-05-31", label: "MAY" },
-    { start: "2025-06-01", end: "2025-06-29", label: "JUN" },
+    { start: "2025-06-01", end: "2025-06-29", label: "JUN" }, //Q2
     { start: "2025-07-01", end: "2025-07-31", label: "JUL" },
     { start: "2025-08-01", end: "2025-08-31", label: "AGO" },
-    { start: "2025-09-01", end: "2025-09-30", label: "SEP" },
+    { start: "2025-09-01", end: "2025-09-29", label: "SEP" }, //Q3
     { start: "2025-10-01", end: "2025-10-31", label: "OCT" },
     { start: "2025-11-01", end: "2025-11-30", label: "NOV" },
-    { start: "2025-12-01", end: "2025-12-30", label: "DIC" }
+    { start: "2025-12-01", end: "2025-12-30", label: "DIC" }  //Q4
   ];
 
   static readonly ACTUAL_TBA_YEAR = [
@@ -85,14 +72,14 @@ export class Constantes {
 
   static readonly NEXT_YEAR = [
     { start: "2026-01-01", end: "2026-01-31", label: "ENETBA" },
-    { start: "2026-02-01", end: "2026-02-29", label: "FEBTBA" },
-    { start: "2026-03-01", end: "2026-03-30", label: "MARTBA" },
+    { start: "2026-02-01", end: "2026-02-28", label: "FEBTBA" },
+    { start: "2026-03-01", end: "2026-03-29", label: "MARTBA" },
     { start: "2026-04-01", end: "2026-04-30", label: "ABRTBA" },
     { start: "2026-05-01", end: "2026-05-31", label: "MAYTBA" },
     { start: "2026-06-01", end: "2026-06-29", label: "JUNTBA" },
     { start: "2026-07-01", end: "2026-07-31", label: "JULTBA" },
     { start: "2026-08-01", end: "2026-08-31", label: "AGOTBA" },
-    { start: "2026-09-01", end: "2026-09-30", label: "SEPTBA" },
+    { start: "2026-09-01", end: "2026-09-29", label: "SEPTBA" },
     { start: "2026-10-01", end: "2026-10-31", label: "OCTTBA" },
     { start: "2026-11-01", end: "2026-11-30", label: "NOVTBA" },
     { start: "2026-12-01", end: "2026-12-30", label: "DICTBA" }

@@ -33,7 +33,7 @@ export class EndpointsService {
     }
 
     const data = 'fields name, slug, platforms.name, first_release_date, involved_companies.company.name; limit 300; where first_release_date >= ' + 
-      initialUNIX + ' & first_release_date <= ' + finishUNIX + ' & version_parent = null & hypes >= 3; sort first_release_date asc;'
+      initialUNIX + ' & first_release_date <= ' + finishUNIX + ' & version_parent = null & hypes >= 2; sort first_release_date asc;'
 
     let response = this.http.post(dataURL, data, { headers });
 
