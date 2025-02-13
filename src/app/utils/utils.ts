@@ -96,28 +96,28 @@ export class Utils {
   
     data.forEach((item: any) => {
       const cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.id, item.platforms);
-      this.postLabel(item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
+      this.postLabel(item.id, item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
     });
   }  
 
-  postLabel(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {  
+  postLabel(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {  
     const nameToFind = name;
     const nameToSearch = this.GAMES_ARRAY.includes(nameToFind);
     const dlcToSearch = this.DLC_ARRAY.includes(nameToFind);
     const isTBA = varTable.includes("TBA");
   
     if (nameToSearch && !isTBA) {
-      this.utilsText.createStarNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+      this.utilsText.createStarNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable);
     } else if (nameToSearch && isTBA) {
-      this.utilsText.createStarTBANode(name, slug, cadenaPlatforms, varTable);
+      this.utilsText.createStarTBANode(itemId, name, slug, cadenaPlatforms, varTable);
     } else if (dlcToSearch && !isTBA) {
-      this.utilsText.createExpansionNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+      this.utilsText.createExpansionNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable);
     } else if (dlcToSearch && isTBA) {
-      this.utilsText.createExpansionTBANode(name, slug, cadenaPlatforms, varTable);
+      this.utilsText.createExpansionTBANode(itemId, name, slug, cadenaPlatforms, varTable);
     } else if (isTBA) {
-      this.utilsText.createTBANode(name, slug, cadenaPlatforms, varTable);
+      this.utilsText.createTBANode(itemId, name, slug, cadenaPlatforms, varTable);
     } else {
-      this.utilsText.createStandardNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+      this.utilsText.createStandardNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable);
     }
   }
 

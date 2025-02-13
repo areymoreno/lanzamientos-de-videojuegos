@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Utils } from 'src/app/utils/utils';
-import { EndpointsService } from '../../services/endpoints/endpoints.service';
-import { Constantes } from 'src/app/utils/constantes';
+import { StorageService } from '../../services/endpoints/storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,20 +9,18 @@ import { Constantes } from 'src/app/utils/constantes';
 })
 export class ProfileComponent {
 
-  private endpoints: EndpointsService = inject(EndpointsService);
+  private endpoints: StorageService = inject(StorageService);
   private utils: Utils = inject(Utils);
 
-  actualYear = "actualYear";
-  actualTBA = "actualTBA";
-  nextYear = "nextYear";
-  nextYearTBA = "nextYearTBA";
-
-  highlighted = "highlighted";
+  session: any[] = JSON.parse(localStorage.getItem('favoritos') || '[]');
+  gameFavorites = "gameFavorites";
   
   constructor () {
   }
 
   async ngOnInit(): Promise<void> {
+    console.log(this.session);
+    this.endpoints.getFavorites(this.session, this.gameFavorites);
   }
 
 }

@@ -12,7 +12,7 @@ export class UtilsText {
 
   constructor() { }
 
-  createNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string, options: any = {}) {
+  createNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string, options: any = {}) {
     const {
       backgroundColor = 'white',
       icon = '',
@@ -25,9 +25,11 @@ export class UtilsText {
     // Condicional para mostrar o no la fecha de lanzamiento
     const releaseText = hasReleaseDate ? releaseDate + ' - ' : '';
 
+    let favoritos = `<i style="color: red;" class="bi bi-heart-fill" id="favorite-${itemId}"></i>`;
+
     let cadena = `<div style="color: ${textColor};">
-        ${releaseText}<b>${icon ? `<i class="${icon}" style="color: ${iconColor}; text-shadow: 0 0 10px black;"></i>` : ''} 
-        ${extraText}<a style="color: ${textColor}; text-decoration: none;" target="_blank" href="https://www.igdb.com/games/${slug}">${name}</a></b>
+        ${releaseText}<b>${favoritos} ${icon ? `<i class="${icon}" style="color: ${iconColor}; text-shadow: 0 0 10px black;"></i>` : ''}
+        ${extraText} <a style="color: ${textColor}; text-decoration: none;" target="_blank" href="https://www.igdb.com/games/${slug}">${name}</a></b>
       </div>
       <div class="text-end">${cadenaPlatforms}</div>`;
 
@@ -38,6 +40,9 @@ export class UtilsText {
     div.setAttribute("style", `background-color: ${backgroundColor};`);
     div.innerHTML = cadena;
     app?.appendChild(div);
+
+    const favoriteIcon = document.getElementById(`favorite-${itemId}`);
+    if (favoriteIcon) favoriteIcon.addEventListener('click', () => this.addFavorite(itemId));
   }
 
   createNotNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string, options: any = {}) {
@@ -71,12 +76,12 @@ export class UtilsText {
 
   // Funciones específicas con diferentes configuraciones
 
-  createStandardNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
-    this.createNode(releaseDate, name, slug, cadenaPlatforms, varTable);
+  createStandardNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
+    this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable);
   }
 
-  createStarNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
-    this.createNode(releaseDate, name, slug, cadenaPlatforms, varTable, {
+  createStarNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
+    this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable, {
       backgroundColor: 'green',
       icon: 'bi bi-star-fill',
       iconColor: 'yellow',
@@ -84,8 +89,8 @@ export class UtilsText {
     });
   }
 
-  createSeasonNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
-    this.createNode(releaseDate, name, slug, cadenaPlatforms, varTable, {
+  createSeasonNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
+    this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable, {
       backgroundColor: 'grey',
       icon: 'bi bi-calendar2-plus-fill',
       iconColor: 'white',
@@ -93,16 +98,16 @@ export class UtilsText {
     });
   }
 
-  createExpansionNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
-    this.createNode(releaseDate, name, slug, cadenaPlatforms, varTable, {
+  createExpansionNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
+    this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable, {
       backgroundColor: 'blue',
       extraText: '<span style="color: white; text-shadow: 0 0 10px black;">DLC</span> ',
       textColor: 'white'
     });
   }
 
-  createExpansionTBANode(name: string, slug: string, cadenaPlatforms: string, varTable: string) {
-    this.createNode('', name, slug, cadenaPlatforms, varTable, {
+  createExpansionTBANode(itemId: any, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
+    this.createNode(itemId, '', name, slug, cadenaPlatforms, varTable, {
       backgroundColor: 'green',
       extraText: '<span style="color: white; text-shadow: 0 0 10px black;">DLC</span> ',
       textColor: 'white',
@@ -110,8 +115,8 @@ export class UtilsText {
     });
   }
 
-  createStarTBANode(name: string, slug: string, cadenaPlatforms: string, varTable: string) {
-    this.createNode('', name, slug, cadenaPlatforms, varTable, {
+  createStarTBANode(itemId: any, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
+    this.createNode(itemId, '', name, slug, cadenaPlatforms, varTable, {
       backgroundColor: 'green',
       icon: 'bi bi-star-fill',
       iconColor: 'yellow',
@@ -120,14 +125,14 @@ export class UtilsText {
     });
   }
 
-  createTBANode(name: string, slug: string, cadenaPlatforms: string, varTable: string) {
-    this.createNode('', name, slug, cadenaPlatforms, varTable, {
+  createTBANode(itemId: any, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
+    this.createNode(itemId, '', name, slug, cadenaPlatforms, varTable, {
       hasReleaseDate: false
     });
   }
 
-  createAnyNode(varTable: string) {
-    this.createNode('', 'El mes no ha pasado todavía', '', '', varTable, {
+  createAnyNode(itemId: any, varTable: string) {
+    this.createNode(itemId, '', 'El mes no ha pasado todavía', '', '', varTable, {
       hasReleaseDate: false
     });
   }
@@ -136,6 +141,26 @@ export class UtilsText {
     this.createNotNode('', 'No hay nada para este mes.', '', '', varTable, {
       hasReleaseDate: false
     });
+  }
+
+  createNothingFavoriteNode(varTable: string) {
+    this.createNotNode('', 'No tiene juegos favoritos.', '', '', varTable, {
+      hasReleaseDate: false
+    });
+  }
+
+  addFavorite(itemId: any) {
+    console.log('Añadir a favoritos > ', itemId);
+    
+    let favLocal: any[] = JSON.parse(localStorage.getItem('favoritos') || '[]');
+
+    if (!favLocal.includes(itemId)) {
+      favLocal.push(itemId);      
+      localStorage.setItem('favoritos', JSON.stringify(favLocal));
+      console.log('Favoritos actualizados:', favLocal);
+    } else {
+      console.log('El item ya está en favoritos');
+    }
   }
 
 }
