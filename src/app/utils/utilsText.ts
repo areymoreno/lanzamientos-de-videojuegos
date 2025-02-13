@@ -48,8 +48,6 @@ export class UtilsText {
   createNotNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string, options: any = {}) {
     const {
       backgroundColor = 'white',
-      icon = '',
-      iconColor = '',
       extraText = '',
       textColor = 'black',
       hasReleaseDate = true
@@ -58,10 +56,7 @@ export class UtilsText {
     // Condicional para mostrar o no la fecha de lanzamiento
     const releaseText = hasReleaseDate ? releaseDate + ' - ' : '';
 
-    let cadena = `<div style="color: ${textColor};">
-        ${releaseText}${icon ? `<i class="${icon}" style="color: ${iconColor}; text-shadow: 0 0 10px black;"></i>` : ''} 
-        ${extraText}${name}
-      </div>
+    let cadena = `<div style="color: ${textColor};"> ${releaseText} ${extraText} ${name} </div>
       <div class="text-end">${cadenaPlatforms}</div>`;
 
     const app = document.getElementById(varTable);
@@ -82,9 +77,7 @@ export class UtilsText {
 
   createStarNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable, {
-      backgroundColor: 'green',
-      icon: 'bi bi-star-fill',
-      iconColor: 'yellow',
+      backgroundColor: 'afedbc',
       textColor: 'white'
     });
   }
@@ -92,8 +85,6 @@ export class UtilsText {
   createSeasonNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable, {
       backgroundColor: 'grey',
-      icon: 'bi bi-calendar2-plus-fill',
-      iconColor: 'white',
       textColor: 'white'
     });
   }
@@ -108,7 +99,7 @@ export class UtilsText {
 
   createExpansionTBANode(itemId: any, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, '', name, slug, cadenaPlatforms, varTable, {
-      backgroundColor: 'green',
+      backgroundColor: 'afedbc',
       extraText: '<span style="color: white; text-shadow: 0 0 10px black;">DLC</span> ',
       textColor: 'white',
       hasReleaseDate: false
@@ -117,9 +108,7 @@ export class UtilsText {
 
   createStarTBANode(itemId: any, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, '', name, slug, cadenaPlatforms, varTable, {
-      backgroundColor: 'green',
-      icon: 'bi bi-star-fill',
-      iconColor: 'yellow',
+      backgroundColor: 'afedbc',
       textColor: 'white',
       hasReleaseDate: false
     });
@@ -150,16 +139,12 @@ export class UtilsText {
   }
 
   addFavorite(itemId: any) {
-    console.log('Añadir a favoritos > ', itemId);
     
     let favLocal: any[] = JSON.parse(localStorage.getItem('favoritos') || '[]');
 
     if (!favLocal.includes(itemId)) {
       favLocal.push(itemId);      
       localStorage.setItem('favoritos', JSON.stringify(favLocal));
-      console.log('Favoritos actualizados:', favLocal);
-    } else {
-      console.log('El item ya está en favoritos');
     }
   }
 

@@ -30,12 +30,7 @@ export class UtilsFavorites {
 
   }
 
-  postCalendarList(data: any[], varTable: string) {
-    if (data.length === 0) {
-      this.utilsText.createNothingFavoriteNode(varTable);
-      return;
-    }
-  
+  postCalendarList(data: any[], varTable: string) { 
     data.forEach((item: any) => {
       const cadenaPlatforms = this.utilsBadges.getPlatformsArray(item.id, item.platforms);
       this.postLabel(item.id, item.releaseDate, item.name, item.slug, cadenaPlatforms, varTable);
@@ -59,9 +54,7 @@ export class UtilsFavorites {
 
   createStarNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable, {
-      backgroundColor: 'green',
-      icon: 'bi bi-star-fill',
-      iconColor: 'yellow',
+      backgroundColor: 'afedbc',
       textColor: 'white'
     });
   }
@@ -69,8 +62,6 @@ export class UtilsFavorites {
   createNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string, options: any = {}) {
     const {
       backgroundColor = 'white',
-      icon = '',
-      iconColor = '',
       extraText = '',
       textColor = 'black',
       hasReleaseDate = true
@@ -82,8 +73,7 @@ export class UtilsFavorites {
     let favoritos = `<i style="color: red;" class="bi bi-heartbreak-fill" id="favorite-${itemId}"></i>`;
 
     let cadena = `<div style="color: ${textColor};">
-        ${releaseText}<b>${favoritos} ${icon ? `<i class="${icon}" style="color: ${iconColor}; text-shadow: 0 0 10px black;"></i>` : ''}
-        ${extraText} <a style="color: ${textColor}; text-decoration: none;" target="_blank" href="https://www.igdb.com/games/${slug}">${name}</a></b>
+        ${releaseText}<b>${favoritos} ${extraText} <a style="color: ${textColor}; text-decoration: none;" target="_blank" href="https://www.igdb.com/games/${slug}">${name}</a></b>
       </div>
       <div class="text-end">${cadenaPlatforms}</div>`;
 
