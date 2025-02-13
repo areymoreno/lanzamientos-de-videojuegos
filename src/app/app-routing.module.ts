@@ -4,14 +4,14 @@ import { HomeComponent } from './modules/components/home/home.component';
 import { ProfileComponent } from './modules/components/profile/profile.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }, 
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }, // Redirige a Home por defecto
+  { path: '', redirectTo: '', pathMatch: 'full' }, 
+  { path: '**', redirectTo: '', pathMatch: 'full' }, // Redirige a Home por defecto
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
