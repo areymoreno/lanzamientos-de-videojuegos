@@ -40,10 +40,10 @@ export class PastComponent {
     let unixFinish = this.utils.realDateToUnixTimeStamp(finishDate) 
     let unixNOW = this.utils.realDateToUnixTimeStamp(dateNOW);
 
-    if((unixNOW >= unixInitial) && (unixNOW <= unixFinish)) {
-      this.endpoints.getGamesReleaseDate(elementalId, dateNOW, finishDate, appendTable);
-    } else if (unixNOW < unixInitial) {
+    if((unixNOW <= unixInitial) && (unixNOW >= unixFinish)) {
       this.endpoints.getGamesReleaseDate(elementalId, initialDate, finishDate, appendTable);
+    } else if (unixNOW > unixInitial) {
+      this.endpoints.getGamesReleaseDate(elementalId, initialDate, dateNOW, appendTable);
     }
   }
 

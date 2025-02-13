@@ -49,7 +49,7 @@ export class Constantes {
 
   static readonly ACTUAL_YEAR = [
     { start: "2025-01-01", end: "2025-01-31", label: "ENE" },
-    { start: "2025-02-01", end: "2025-02-29", label: "FEB" },
+    { start: "2025-02-01", end: "2025-02-28", label: "FEB" },
     { start: "2025-03-01", end: "2025-03-30", label: "MAR" },
     { start: "2025-04-01", end: "2025-04-30", label: "ABR" },
     { start: "2025-05-01", end: "2025-05-31", label: "MAY" },
