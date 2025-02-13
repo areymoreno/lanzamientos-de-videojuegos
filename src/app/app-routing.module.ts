@@ -6,8 +6,8 @@ import { ProfileComponent } from './modules/components/profile/profile.component
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'past', component: PastComponent },
+  { path: 'favoritos', component: ProfileComponent },
+  { path: 'pasado', component: PastComponent },
   { path: '', redirectTo: '', pathMatch: 'full' }, 
   { path: '**', redirectTo: '', pathMatch: 'full' }, // Redirige a Home por defecto
 ];

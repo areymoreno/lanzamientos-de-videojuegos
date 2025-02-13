@@ -104,11 +104,7 @@ export class UtilsBadges {
     if (!favorites.includes(gameId)) {
       favorites.push(gameId);
       localStorage.setItem('favorites', JSON.stringify(favorites));
-      alert("Juego agregado a favoritos.");
-    } else {
-      alert("El juego ya está en favoritos.");
-    }
+    } 
   }
-
 
 }

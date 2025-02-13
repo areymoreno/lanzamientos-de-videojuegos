@@ -54,7 +54,7 @@ export class UtilsFavorites {
 
   createStarNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable, {
-      backgroundColor: 'afedbc',
+      backgroundColor: '69b778',
       textColor: 'white'
     });
   }

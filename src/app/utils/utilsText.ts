@@ -77,7 +77,7 @@ export class UtilsText {
 
   createStarNode(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable, {
-      backgroundColor: 'afedbc',
+      backgroundColor: '69b778',
       textColor: 'white'
     });
   }
@@ -99,7 +99,7 @@ export class UtilsText {
 
   createExpansionTBANode(itemId: any, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, '', name, slug, cadenaPlatforms, varTable, {
-      backgroundColor: 'afedbc',
+      backgroundColor: '69b778',
       extraText: '<span style="color: white; text-shadow: 0 0 10px black;">DLC</span> ',
       textColor: 'white',
       hasReleaseDate: false
@@ -108,7 +108,7 @@ export class UtilsText {
 
   createStarTBANode(itemId: any, name: string, slug: string, cadenaPlatforms: string, varTable: string) {
     this.createNode(itemId, '', name, slug, cadenaPlatforms, varTable, {
-      backgroundColor: 'afedbc',
+      backgroundColor: '69b778',
       textColor: 'white',
       hasReleaseDate: false
     });
