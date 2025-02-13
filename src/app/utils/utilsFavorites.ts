@@ -1,15 +1,15 @@
 import { Injectable, inject } from '@angular/core';
 import { UtilsBadges } from './utilsBadges';
-import { UtilsText } from './utilsText';
 import { Constantes } from './constantes';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsFavorites {
 
+  private router: Router = inject(Router);
   private utilsBadges: UtilsBadges = inject(UtilsBadges);
-  private utilsText: UtilsText = inject(UtilsText);
 
   constructor() { }
 
@@ -96,7 +96,13 @@ export class UtilsFavorites {
     localStorage.setItem('favoritos', JSON.stringify(updatedFavorites));
 
     this.sleep(5000);
-    window.location.reload();
+    this.reloadPage();
+  }
+
+  reloadPage() {
+    this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/favoritos']);
+    });
   }
 
   sleep(ms: number) {
