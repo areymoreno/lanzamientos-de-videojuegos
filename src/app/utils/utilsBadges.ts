@@ -16,6 +16,7 @@ export class UtilsBadges {
       playstation: number;
       xbox: number;
       nintendo: number;
+      nintendoSwitch2: number;
       pc: number;
       smartphone: number;
       apple: number;
@@ -28,6 +29,7 @@ export class UtilsBadges {
       playstation: 0,
       xbox: 0,
       nintendo: 0,
+      nintendoSwitch2: 0,
       pc: 0,
       smartphone: 0,
       apple: 0,
@@ -41,6 +43,7 @@ export class UtilsBadges {
       playstation: [48, 167],
       xbox: [49, 169],
       nintendo: [130],
+      nintendoSwitch2: [508],
       pc: [6],
       apple: [14],
       smartphone: [39, 34],
@@ -62,6 +65,7 @@ export class UtilsBadges {
       platformCounts.playstation,
       platformCounts.xbox,
       platformCounts.nintendo,
+      platformCounts.nintendoSwitch2,
       platformCounts.pc,
       platformCounts.smartphone,
       platformCounts.apple,
@@ -71,11 +75,12 @@ export class UtilsBadges {
     );
   }
 
-  postPlatforms(id: number, playstation: number, xbox: number, nintendo: number, pc: number, smartphone: number, apple: number, meta: number, psvr2: number, vr: number) {
+  postPlatforms(id: number, playstation: number, xbox: number, nintendo: number, nintendoSwitch2: number, pc: number, smartphone: number, apple: number, meta: number, psvr2: number, vr: number) {
     const platforms = [
       { condition: playstation, badgeClass: 'text-bg-primary', title: 'PlayStation', icon: 'bi-playstation' },
       { condition: xbox, badgeClass: 'text-bg-success', title: 'Xbox', icon: 'bi-xbox' },
       { condition: nintendo, badgeClass: 'text-bg-danger', title: 'Nintendo Switch', icon: 'bi-nintendo-switch' },
+      { condition: nintendoSwitch2, badgeClass: 'text-bg-danger', title: 'Nintendo Switch 2', icon: 'bi-nintendo-switch' },
       { condition: pc, badgeClass: 'text-bg-secondary', title: 'Windows', icon: 'bi-windows' },
       { condition: apple, badgeClass: 'text-bg-dark', title: 'Apple', icon: 'bi-apple' },
       { condition: meta, badgeClass: 'text-bg-info', title: 'Meta Quest', icon: 'bi-headset-vr' },

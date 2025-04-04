@@ -87,7 +87,7 @@ export class EndpointsService {
   headerV1 () {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': Keys.BEARER_FINAL,
+      'Authorization': Keys.BEARER_V1,
       'Client-ID': Keys.CLIENT_ID, 
       'x-cors-api-key': Keys.CORS_SH_KEY,
     });
