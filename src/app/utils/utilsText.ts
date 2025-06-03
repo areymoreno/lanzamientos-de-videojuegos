@@ -25,7 +25,8 @@ export class UtilsText {
     // Condicional para mostrar o no la fecha de lanzamiento
     const releaseText = hasReleaseDate ? releaseDate + ' - ' : '';
 
-    let favoritos = `<i style="color: red;" class="bi bi-heart-fill" id="favorite-${itemId}"></i>`;
+    let favoritos = `<i style="color: red;" class="bi bi-heart" id="favorite-${itemId}"></i>`;
+    let favoritosFill = `<i style="color: red;" class="bi bi-heart-fill" id="favorite-${itemId}"></i>`;
 
     let cadena = `<div style="color: ${textColor};">
         ${releaseText}<b>${favoritos} ${icon ? `<i class="${icon}" style="color: ${iconColor}; text-shadow: 0 0 10px black;"></i>` : ''}
@@ -41,8 +42,24 @@ export class UtilsText {
     div.innerHTML = cadena;
     app?.appendChild(div);
 
+
     const favoriteIcon = document.getElementById(`favorite-${itemId}`);
-    if (favoriteIcon) favoriteIcon.addEventListener('click', () => this.addFavorite(itemId));
+    if (favoriteIcon) {
+      favoriteIcon.addEventListener('click', () => {
+        // Alternar entre bi-heart y bi-heart-fill
+        if (favoriteIcon.classList.contains('bi-heart')) {
+          favoriteIcon.classList.remove('bi-heart');
+          favoriteIcon.classList.add('bi-heart-fill');
+          this.addFavorite(itemId);
+        } else {
+          favoriteIcon.classList.remove('bi-heart-fill');
+          favoriteIcon.classList.add('bi-heart');
+          this.delToFavorite(itemId);
+        }
+         // Llamar a la función para manejar favoritos
+      });
+    }
+
   }
 
   createNotNode(releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string, options: any = {}) {
@@ -139,13 +156,20 @@ export class UtilsText {
   }
 
   addFavorite(itemId: any) {
-    
+
     let favLocal: any[] = JSON.parse(localStorage.getItem('favoritos') || '[]');
 
     if (!favLocal.includes(itemId)) {
-      favLocal.push(itemId);      
+      favLocal.push(itemId);
       localStorage.setItem('favoritos', JSON.stringify(favLocal));
     }
+  }
+
+  delToFavorite(itemId: any) {
+    const favorites = JSON.parse(localStorage.getItem('favoritos') || '[]');
+    const updatedFavorites = favorites.filter((item: any) => item !== itemId);
+
+    localStorage.setItem('favoritos', JSON.stringify(updatedFavorites));
   }
 
 }

@@ -26,20 +26,16 @@ export class HomeComponent {
   async ngOnInit(): Promise<void> {
 
     let dateNOW = this.utils.formatDateNow(0);
-    //let dateNowPlus7 = this.utils.formatDateNow(7);
-
-    //this.endpoints.getGamesPlusDate(this.highlighted, dateNOW, dateNowPlus7);
-    //this.sleep(1500);
 
     Constantes.ACTUAL_YEAR.forEach(month => {
       this.automaticCalendar(this.actualYear, month.start, month.end, dateNOW, month.label);
       this.sleep(1000);
     });
 
-    Constantes.ACTUAL_TBA_YEAR.forEach(month => {
-      this.automaticCalendar(this.actualTBA, month.start, month.end, dateNOW, month.label);
-      this.sleep(1000);
-    });
+    // Constantes.ACTUAL_TBA_YEAR.forEach(month => {
+    //  this.automaticCalendar(this.actualTBA, month.start, month.end, dateNOW, month.label);
+    //  this.sleep(1000);
+    //});
 
     // Constantes.NEXT_YEAR.forEach(month => {
     //   this.automaticCalendar(this.nextYear, month.start, month.end, dateNOW, month.label);

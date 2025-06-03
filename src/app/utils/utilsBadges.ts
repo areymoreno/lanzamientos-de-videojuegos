@@ -92,9 +92,11 @@ export class UtilsBadges {
     let cadena = '';
 
     platforms.forEach(platform => {
-      if (platform.condition) {
+      if (platform.condition && platform.title !== 'Nintendo Switch 2') {
         cadena += `<span class="badge ${platform.badgeClass}" style="margin: 3px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${platform.title}"><i class="bi ${platform.icon}"></i></span>`;
-      }
+      } else if (platform.condition && platform.title === 'Nintendo Switch 2') {
+        cadena += `<span class="badge ${platform.badgeClass}" style="margin-left: 3px; margin-right: 3px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${platform.title}"><i class="bi ${platform.icon}"></i> 2</span>`;
+      } 
     });
 
     if (platforms.every(platform => !platform.condition)) {
