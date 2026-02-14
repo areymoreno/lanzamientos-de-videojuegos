@@ -15,7 +15,7 @@ export class Utils {
 
   NOW_DATE = new Date();
   GAMES_ARRAY = Constantes.STAR_GAMES;
-  DLC_ARRAY = Constantes.STAR_DLC;
+
 
   unixTimeStampToRealDate(unixTimeStamp: number) {
     const miliseconds = unixTimeStamp * 1000;
@@ -64,7 +64,7 @@ export class Utils {
     const constantMap: { [key: string]: any[] } = {
       "actualYear": Constantes.MONTHS_YEAR,
       "actualTBA": Constantes.ACTUAL_YEAR_TBA,
-      "nextYear": Constantes.MONTHS_YEAR_TBA,
+      "nextYear": Constantes.MONTHS_NEXT_YEAR,
       "nextYearTBA": Constantes.GAMES_YEAR_TBA,
     };
   
@@ -103,17 +103,12 @@ export class Utils {
   postLabel(itemId: any, releaseDate: string, name: string, slug: string, cadenaPlatforms: string, varTable: string) {  
     const nameToFind = name;
     const nameToSearch = this.GAMES_ARRAY.includes(nameToFind);
-    const dlcToSearch = this.DLC_ARRAY.includes(nameToFind);
     const isTBA = varTable.includes("TBA");
   
     if (nameToSearch && !isTBA) {
       this.utilsText.createStarNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable);
     } else if (nameToSearch && isTBA) {
       this.utilsText.createStarTBANode(itemId, name, slug, cadenaPlatforms, varTable);
-    } else if (dlcToSearch && !isTBA) {
-      this.utilsText.createExpansionNode(itemId, releaseDate, name, slug, cadenaPlatforms, varTable);
-    } else if (dlcToSearch && isTBA) {
-      this.utilsText.createExpansionTBANode(itemId, name, slug, cadenaPlatforms, varTable);
     } else if (isTBA) {
       this.utilsText.createTBANode(itemId, name, slug, cadenaPlatforms, varTable);
     } else {

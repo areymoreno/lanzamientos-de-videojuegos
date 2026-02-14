@@ -1,26 +1,38 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Utils } from 'src/app/utils/utils';
 import { StorageService } from '../../services/endpoints/storage.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['../../../../../src/app/app.component.scss']
 })
-export class ProfileComponent {
 
+export class ProfileComponent implements OnInit {
+  
   private endpoints: StorageService = inject(StorageService);
   private utils: Utils = inject(Utils);
 
+  public noFavorites: boolean = false;
+  
   session: any[] = JSON.parse(localStorage.getItem('favoritos') || '[]');
   gameFavorites = "gameFavorites";
-  
-  constructor () {
+  private subscription?: Subscription;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    if (this.session.length > 0) {
+      this.subscription = this.endpoints.getFavorites(this.session, this.gameFavorites).subscribe({
+        next: (data) => {
+        }
+      });
+    } else {
+      this.noFavorites = true;
+    }
   }
 
-  async ngOnInit(): Promise<void> {
-    console.log(this.session);
-    this.endpoints.getFavorites(this.session, this.gameFavorites);
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
-
 }

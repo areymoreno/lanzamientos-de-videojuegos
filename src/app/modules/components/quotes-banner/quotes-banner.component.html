@@ -1,0 +1,21 @@
+<div class="d-flex align-items-center p-3 my-3 text-white rounded shadow-sm" 
+     style="background-color: #055160;">
+  <i class="bi bi-question-square fs-1 me-3"></i>
+
+  <!-- Columna flex para título + texto + autor -->
+  <div class="d-flex flex-column flex-grow-1 lh-1">
+    <h1 class="h6 mb-1 text-white lh-1" style="padding-bottom: 10px;">¿Sabías que?</h1>
+
+    <small class="mb-1" style="font-size: larger;">
+      {{ quoteRandom }}
+    </small>
+
+    <!-- Autor siempre abajo a la derecha -->
+    <h6 class="h6 mb-0 text-white lh-1 text-end mt-auto" style="font-size: larger;">
+      {{ quoteAuthor }}
+    </h6>
+    <span class="h6 mb-0 text-white lh-1 text-end" style="font-size: small; padding-top: 5px;">
+      {{ quoteGame }}
+    </span>
+  </div>
+</div>

@@ -13,6 +13,8 @@ export class PastComponent {
   private endpoints: EndpointsService = inject(EndpointsService);
   private utils: Utils = inject(Utils);
 
+  public noPast: boolean = false;
+
   actualYear = "actualYear";
   actualTBA = "actualTBA";
   nextYear = "nextYear";
@@ -44,6 +46,8 @@ export class PastComponent {
       this.endpoints.getGamesReleaseDate(elementalId, initialDate, dateNOW, appendTable);
     } else if (unixNOW > unixInitial) {
       this.endpoints.getGamesReleaseDate(elementalId, initialDate, finishDate, appendTable);
+    } else {
+      this.noPast = true;
     }
   }
 

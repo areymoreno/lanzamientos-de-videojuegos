@@ -4,5 +4,17 @@
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/api/gamesTBA": {
+    "target": "https://backend.lanzamientosdevideojuegos.es",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/api/favorites": {
+    "target": "https://backend.lanzamientosdevideojuegos.es",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }

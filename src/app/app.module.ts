@@ -12,6 +12,8 @@ import { Constantes } from './utils/constantes';
 import { HomeComponent } from './modules/components/home/home.component';
 import { ModalComponent } from './modules/modal/modal.component';
 import { ProfileComponent } from './modules/components/profile/profile.component';
+import { HolidayBannerComponent } from './modules/components/holiday-banner/holiday-banner.component';
+import { QuotesBannerComponent } from './modules/components/quotes-banner/quotes-banner.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ProfileComponent } from './modules/components/profile/profile.component
     FooterComponent,
     HomeComponent,
     ProfileComponent,
-    ModalComponent
+    ModalComponent,
+    HolidayBannerComponent,
+    QuotesBannerComponent
   ],
   imports: [
     BrowserModule,

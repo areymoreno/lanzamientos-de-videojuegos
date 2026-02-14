@@ -1,15 +1,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
 <body>
-  <div class="container divYearMargin">
+  <div class="container">
 
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>¡Hola amigos!</strong> Cada vez que eliminéis un juego de favoritos se recargará la página. El símbolo para ello es el siguiente: <i style="color: red;" class="bi bi-heartbreak-fill"></i>
-    </div>
+    <div id="divYear" class="container divYearMargin" style="margin-top: 25px;">
+      <h1 class="divYearMargin">Tus favoritos</h1>
 
-    <div id="divYear" class="container divYearMargin">
-      <h1 class="divYearMargin">Tus favoritos de 2025</h1>
+      <app-quotes-banner *ngIf="noFavorites"></app-quotes-banner>
       <div id="gameFavorites" class="row"></div>
+      
     </div>
+    
   </div>
 </body>
